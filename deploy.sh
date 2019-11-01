@@ -6,7 +6,7 @@ set -e
 npm run docs:build
 
 # 进入生成的文件夹
-cd .vuepress/dist
+cd docs/.vuepress/dist
 
 # 提交构建后的页面到github
 git init
