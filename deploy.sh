@@ -18,11 +18,11 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git config --local user.name "Aaron"
-git config --local user.email "kongyajie0704@gmail.com"
+git config --local user.name "kongyajie"
+git config --local user.email "308522505@qq.com"
 
 # 直接提交并覆盖
 # git push -f https://github.com/kongyajie/kongyajie.github.io.git master
 
 # 使用 travis 持续集成
-git push -f https://a1c47e2fccde4f6469d4bb4ec5f54842f2691716@github.com/kongyajie/kongyajie.github.io.git master
+git push -f https://59efe85c07654724448d65f01a62bcc6014657c0@github.com/kongyajie/kongyajie.github.io.git master
