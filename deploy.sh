@@ -20,4 +20,4 @@ git commit -m 'deploy'
 # git push -f https://github.com/kongyajie/kongyajie.github.io.git master
 
 # 使用 travis 持续集成
-git push -f https://ea617298745ccb84254ce489468224e534ba208c@github.com/kongyajie/kongyajie.github.io.git master
+git push -f https://a1c47e2fccde4f6469d4bb4ec5f54842f2691716@github.com/kongyajie/kongyajie.github.io.git master
