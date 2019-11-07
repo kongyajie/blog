@@ -18,6 +18,8 @@ git init
 git add -A
 git commit -m 'deploy'
 
+git update-index --add --chmod=+x deploy.sh
+
 # 直接提交并覆盖
 # git push -f https://github.com/kongyajie/kongyajie.github.io.git master
 
