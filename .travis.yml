@@ -5,6 +5,8 @@ node_js:
 cache:
   directories:
     - node_modules
+install:
+    - npm install -g vuepress
 script:
   - ./deploy.sh
 branch: master
