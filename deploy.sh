@@ -19,7 +19,7 @@ git add -A
 git commit -m 'deploy'
 
 git config --local user.name "Aaron"
-git config --local user.email "308522505@qq.com"
+git config --local user.email "kongyajie0704@gmail.com"
 
 # 直接提交并覆盖
 # git push -f https://github.com/kongyajie/kongyajie.github.io.git master
