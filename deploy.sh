@@ -16,3 +16,6 @@ git init
 git add -A
 git commit -m 'deploy'
 git push -f https://github.com/kongyajie/kongyajie.github.io.git master
+
+# 使用 travis 持续集成
+git push -f https://e6a04247da9bb63ca3e6649121ce8753de4d6e71@github.com/kongyajie/blog master
