@@ -22,7 +22,7 @@ git config --local user.name "kongyajie"
 git config --local user.email "308522505@qq.com"
 
 # 直接提交并覆盖
-git push -f https://github.com/kongyajie/kongyajie.github.io.git master
+# git push -f https://github.com/kongyajie/kongyajie.github.io.git master
 
 # 使用 travis 持续集成
-# git push -f https://${access_token}@github.com/kongyajie/kongyajie.github.io.git master
+git push -f https://${access_token}@github.com/kongyajie/kongyajie.github.io.git master
