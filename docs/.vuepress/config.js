@@ -14,7 +14,8 @@ module.exports = {
         {
           title: 'JS进阶',
           children: [
-            '/article/JS进阶/你真的掌握变量和类型了吗',
+            '/article/JS进阶/你真的掌握变量和类型了吗（一）数据类型',
+            '/article/JS进阶/你真的掌握变量和类型了吗（二）类型转换',
             '/article/JS进阶/如何写出一个惊艳面试官的深拷贝',
             '/article/JS进阶/浮点数精度问题'
           ]
