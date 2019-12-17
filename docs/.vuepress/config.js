@@ -30,10 +30,16 @@ module.exports = {
           ]
         },
         {
-            title: '综合',
-            children: [
-              '/article/综合/【自检】前端知识清单',
-            ]
+          title:'编译原理',
+          children: [
+            '/article/编译原理/如何创造一门编程语言'
+          ]
+        },
+        {
+          title: '综合',
+          children: [
+            '/article/综合/【自检】前端知识清单',
+          ]
         }
       ]
     }
