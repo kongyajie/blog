@@ -38,7 +38,7 @@ module.exports = {
         {
           title:'面试题集',
           children: [
-            '/article/面试题集/javaScript'
+            '/article/面试题集/javascript'
           ]
         },
         {

@@ -1,13 +1,13 @@
 # JavaScript
 
-## 1、如何检测js对象是数组类型？
+1、如何检测js对象是数组类型？
 
 - Array.isArray()
 - instance of 
 - Object.toString.call()
 
 
-## 2、编译型语言和解释性语言的区别
+2、编译型语言和解释性语言的区别
 
 - 非独立
 - 效率低
