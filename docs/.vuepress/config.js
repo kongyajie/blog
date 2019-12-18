@@ -36,6 +36,12 @@ module.exports = {
           ]
         },
         {
+          title:'面试题集',
+          children: [
+            '/article/面试题集/javaScript'
+          ]
+        },
+        {
           title: '综合',
           children: [
             '/article/综合/【自检】前端知识清单',
