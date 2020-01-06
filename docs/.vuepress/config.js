@@ -45,6 +45,7 @@ module.exports = {
           title: '综合',
           children: [
             '/article/综合/【自检】前端知识清单',
+            '/article/综合/【自检】前端知识清单（附解答）',
           ]
         }
       ]
