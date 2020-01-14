@@ -108,4 +108,14 @@ foo();
 - this缺陷：1、this不会继承外部函数的this；2、普通函数this默认执行window（非严格模式下）；3、对象中函数调用this，即是对象本身
 - 解决方案：self、箭头函数、call/apply/bind
 
+## JavaScript的语言类型
+
+## JavaScript的数据类型
+
+## JavaScript的内存模型
+
+## 垃圾回收
+
+## V8引擎的工作原理
+
 以上，就是JS代码执行流程的具体流程了，欢迎指正和补充~
