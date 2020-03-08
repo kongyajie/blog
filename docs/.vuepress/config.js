@@ -22,6 +22,12 @@ module.exports = {
           ]
         },
         {
+          title: 'JS编程',
+          children: [
+            '/article/JS编程/防抖和节流.md'
+          ]
+        },
+        {
           title: '剑指offer',
           children: [
             '/article/剑指offer/01-二维数组中的查找',
