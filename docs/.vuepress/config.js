@@ -24,7 +24,8 @@ module.exports = {
         {
           title: 'JS编程',
           children: [
-            '/article/JS编程/防抖和节流.md'
+            '/article/JS编程/防抖和节流.md',
+            '/article/JS编程/数组去重.md'
           ]
         },
         {
