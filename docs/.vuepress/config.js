@@ -26,7 +26,8 @@ module.exports = {
           children: [
             '/article/JS编程/防抖和节流.md',
             '/article/JS编程/数组去重.md',
-            '/article/JS编程/类型判断.md'
+            '/article/JS编程/类型判断.md',
+            '/article/JS编程/深拷贝浅拷贝.md'
           ]
         },
         {
