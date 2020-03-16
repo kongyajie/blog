@@ -31,6 +31,7 @@ module.exports = {
             '/article/JS编程/extend函数.md',
             '/article/JS编程/数组最大值.md',
             '/article/JS编程/数组的扁平化.md',
+            '/article/JS编程/数组中查找指定元素.md',
           ]
         },
         {
