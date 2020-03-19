@@ -33,7 +33,8 @@ module.exports = {
             '/article/JS编程/数组的扁平化.md',
             '/article/JS编程/数组中查找指定元素.md',
             '/article/JS编程/jQuery的each方法.md',
-            '/article/JS编程/判断两个对象相等.md'
+            '/article/JS编程/判断两个对象相等.md',
+            '/article/JS编程/函数柯里化.md'
           ]
         },
         {
