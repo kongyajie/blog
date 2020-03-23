@@ -37,7 +37,8 @@ module.exports = {
             '/article/JS编程/函数柯里化.md',
             '/article/JS编程/偏函数.md',
             '/article/JS编程/惰性函数.md',
-            '/article/JS编程/函数记忆.md'
+            '/article/JS编程/函数记忆.md',
+            '/article/JS编程/递归.md'
           ]
         },
         {
