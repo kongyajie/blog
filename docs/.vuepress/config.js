@@ -39,7 +39,8 @@ module.exports = {
             '/article/JS编程/惰性函数.md',
             '/article/JS编程/函数记忆.md',
             '/article/JS编程/递归.md',
-            '/article/JS编程/乱序.md'
+            '/article/JS编程/乱序.md',
+            '/article/JS编程/解读V8排序源码.md'
           ]
         },
         {
