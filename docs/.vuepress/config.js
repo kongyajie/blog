@@ -44,6 +44,12 @@ module.exports = {
           ]
         },
         {
+          title: 'underscore',
+          children: [
+            '/article/underscore/如何自己写一个underscore.md',
+          ]
+        },
+        {
           title: '剑指offer',
           children: [
             '/article/剑指offer/01-二维数组中的查找',
