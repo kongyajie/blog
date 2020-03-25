@@ -46,7 +46,7 @@ module.exports = {
         {
           title: 'underscore',
           children: [
-            '/article/underscore/如何自己写一个underscore.md',
+            '/article/underscore/如何写一个自己的underscore.md',
           ]
         },
         {
