@@ -1,4 +1,4 @@
-# 如何自己写一个underscore
+# 如何写一个自己的underscore
 
 ```js
 (function() {
