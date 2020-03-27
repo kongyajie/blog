@@ -47,7 +47,8 @@ module.exports = {
           title: 'underscore',
           children: [
             '/article/underscore/如何写一个自己的underscore.md',
-            '/article/underscore/链式调用.md'
+            '/article/underscore/链式调用.md',
+            '/article/underscore/内部函数 cb 和 optimizeCb.md',
           ]
         },
         {
