@@ -11,7 +11,7 @@ npm run docs:build
 cd docs/.vuepress/dist
 
 # 添加CNAME，链接到自定义域名
-# echo 'blog.aaronkong.top' > CNAME
+echo 'blog.aaronkong.top' > CNAME
 
 # 提交构建后的页面到github
 git init
