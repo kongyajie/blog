@@ -14,17 +14,17 @@ module.exports = {
         {
           title: '前端基础',
           children: [
-            '/article/前端基础/0、前端开发的历史和趋势',
-            '/article/前端基础/1、JavaScript基础',
-            '/article/前端基础/2、HTML和CSS',
-            '/article/前端基础/3、计算机基础',
-            '/article/前端基础/4、数据结构与算法',
-            '/article/前端基础/5、运行环境',
-            '/article/前端基础/6、前端工程',
-            '/article/前端基础/7、框架与类库',
-            '/article/前端基础/8、项目与业务',
-            '/article/前端基础/9、学习之外',
-            '/article/前端基础/10、技术之外'
+            '/article/前端基础/0-前端开发的历史和趋势',
+            '/article/前端基础/1-JavaScript基础',
+            '/article/前端基础/2-HTML和CSS',
+            '/article/前端基础/3-计算机基础',
+            '/article/前端基础/4-数据结构与算法',
+            '/article/前端基础/5-运行环境',
+            '/article/前端基础/6-前端工程',
+            '/article/前端基础/7-框架与类库',
+            '/article/前端基础/8-项目与业务',
+            '/article/前端基础/9-学习之外',
+            '/article/前端基础/10-技术之外'
           ]
         },
         {
