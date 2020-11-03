@@ -10,7 +10,6 @@ module.exports = {
     ],
     sidebar: {
       '/article/': [
-        '/article/',
         {
           title: '前端基础',
           children: [
