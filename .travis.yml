@@ -9,6 +9,7 @@ cache:
 before_install:
  - chmod +x deploy.sh
 install:
-    - npm install -g vuepress
+    - npm install vuepress
+    - npm install vue-router@3.4.5
 script:
   - ./deploy.sh
