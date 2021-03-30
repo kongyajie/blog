@@ -16,25 +16,17 @@ module.exports = {
             '/article/前端知识体系/总览',
             '/article/前端知识体系/CSS面试题',
             '/article/前端知识体系/JS基础',
+            '/article/前端知识体系/JS代码',
+            '/article/前端知识体系/JS-Web-Api',
+            '/article/前端知识体系/运行环境',
+            '/article/前端知识体系/HTTP协议',
           ]
         },
         {
           title: '前端框架',
           children: [
-            '/article/前端框架/第1章 课程导学',
-            '/article/前端框架/第2章 课程介绍',
-            '/article/前端框架/第3章 Vue 使用',
-            '/article/前端框架/第4章 Vue 原理',
-            '/article/前端框架/第5章 Vue 面试真题演练',
-            '/article/前端框架/第6章 Vue3 学习（新）',
-            '/article/前端框架/第7章 React 使用',
-            '/article/前端框架/第8章 React 原理',
-            '/article/前端框架/第9章 React 面试真题演练',
-            '/article/前端框架/第10章 webpack 和 babel',
-            '/article/前端框架/第11章 项目设计',
-            '/article/前端框架/第12章 项目流程',
-            '/article/前端框架/第13章 课程总结',
-            '/article/前端框架/第14章 react hooks',
+            '/article/前端框架/总览',
+            '/article/前端框架/vue',
           ]
         },
         {

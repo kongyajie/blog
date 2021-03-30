@@ -47,6 +47,12 @@ function deepClone(obj, map = new WeakMap()) {
         return map.get(obj);
     }
 
+    // 判断是否为几种特殊需要处理的类型
+    let type = [Date, RegExp, Set, Map, WeakMap, WeakSet];
+    if(type.includes(obj.constructor)) {
+        return new obj.constructor(obj);
+    }
+
     // 拷贝
     let result = {};
     if (obj instanceof Array) { // 考虑数组
@@ -73,13 +79,19 @@ const target = {
     field3: {
         child: 'child'
     },
-    field4: [2,4,8]
+    field4: [2,4,8],
+    field5: new Date(),
+    field6: function() {console.log('123')},
+    field7: new RegExp('123'),
+    field8: new Set([1,2,3,4]),
+    field9: new Map([['name', '张三'],['title', 'Author']]),
 };
-target.target = target;
+// target.target = target;
 
 let result = deepClone(target);
 console.log(result);
 ```
+## 手写深度比较 isEqual
 
 ## 实现一个call,apply,bind
 
@@ -88,6 +100,49 @@ console.log(result);
 ## 实现一个symbol
 
 ## 节流、防抖
+
+- 防抖：用户输入结束或暂停时，才会触发change事件
+
+```js
+function debounce(fn, delay = 500) {
+    let timer = null
+    
+    return function() {
+        if (timer) {
+            clearTimeout(timer)
+        }
+        setTimeout(() => {
+            fn.apply(this, arguments)
+            timer = null
+        }, delay)
+    }
+}
+
+input1.addEventListener('keyup', debounce(() => {
+    console.log(inpu1.value)
+}), 600)
+```
+
+- 节流：无论拖拽速度多快，都会每隔100ms触发一次
+
+```js
+function throttle(fn, delay = 100) {
+    let timer = null
+
+    return function() {
+        if (timer) {
+            return
+        }
+        setTimeout(() => {
+            fn.apply(this, arguments)
+            timer = null
+        }, delay)
+    }
+}
+```
+
+- 防抖策略是将 高频操作合并为一次执行，如果高频操作每次清空定时器，以最后一次操作为主。
+- 节流策略是 将高频操作 按周期执行，一个timeout 周期内执行一次，如果第一个周期执行完，有新的操作进来进行另一个周期。
 
 ## promise使用及实现、promise并行执行和顺序执行；
 ## 实现Promise/PromiseALL

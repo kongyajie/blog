@@ -137,16 +137,6 @@ Symbol.keyFor(s2) // undefined
 - 考虑嵌套
 
 
-### let const var区别
-- var声明是全局作用域或函数作用域，而let和const是块作用域。
-- var变量可以在其范围内更新和重新声明； let变量可以被更新但不能重新声明； const变量既不能更新也不能重新声明。
-- 它们都被提升到其作用域的顶端。 但是，虽然使用变量undefined初始化了var变量，但未初始化let和const变量。
-- 尽管可以在不初始化的情况下声明var和let，但是在声明期间必须初始化const。
-
-> 暂时性死区：ES6规定，let/const 命令会使区块形成封闭的作用域。若在声明之前使用变量，就会报错。
-总之，在代码块内，使用 let 命令声明变量之前，该变量都是不可用的。
-这在语法上，称为 “暂时性死区”（ temporal dead zone，简称 TDZ）。
-
 ### 变量计算-类型转换
 1. 除了 ==  null 之外，其他一律用 ===
 2. if语句和逻辑判断：变量使用 truly变量 & falsely变量
@@ -429,60 +419,37 @@ console.log('script end');
 - valueOf()	返回数组对象的原始值。
 
 
-### 考点总结
-- eventloop
-- DOM事件和event loop
-- Promise进阶
-- async/await
+  
+## JS真题
+### 何为变量提升？
+- 1.js 会将变量的声明提升到js顶部执行，本质是js引擎在编译的时候，就将所有的变量声明了，因此执行时所有的变量都已经完成了声明。
+- 2.当有多个同名变量声明的时候，函数声明会覆盖其他的声明。如果有多个函数声明，则是由最后的一个函数声明覆盖之前所有的声明。
+- 3.let和const都具有变量提升的效果，但是它们都具有临死性死区，从作用域开始，一直到变量的声明语句这整一块，你都不能使用该变量。
 
-### DOM
-- DOM 本质：HTML解析出的一棵树
-- DOM 节点操作
-  - 获取DOM节点
-  - property和attribute
-    - property：修改JS对象属性，不会体现再HTML结构中
-    - attribute：修改HTML属性，会改变HTML结构（标签结构）
-    - 两者都有可能引起DOM重新渲染
-    - 建议：尽量用 property 操作，因为property可能会在JS机制中，避免一些不必要的DOM渲染；但是attribute是修改HTML结构，一定会引起DOM结构的重新渲染，而DOM重新渲染是比较耗费性能的
-- DOM 结构操作
-  - 新增/插入节点 
-    - appendChild
-  - 获取子元素列表，获取父元素
-    - childNodes
-    - parentNode
-    - nodeName
-    - nodeType
-  - 删除子元素
-    -removeChild
-- DOM操作性能优化
-  - DOM查询做缓存
-  - 将频繁操作改为一次性操作 document.createDocumentFragment()
+### var 和 let const 的区别
+  - var声明是全局作用域或函数作用域，而let和const是块作用域。
+  - var变量可以在其范围内更新和重新声明； let变量可以被更新但不能重新声明； const变量既不能更新也不能重新声明。
+  - 它们都被提升到其作用域的顶端。 但是，虽然使用变量undefined初始化了var变量，但未初始化let和const变量。
+  - 尽管可以在不初始化的情况下声明var和let，但是在声明期间必须初始化const。
 
-### BOM（Browser Object Model）
-- navigator
-  - userAgent
-- screen
-  - width
-  - height
-- location
-  - href
-  - protocol
-  - hostname
-  - pathname
-  - search
-  - hash
-- history
-  - back()
-  - forward()
+  > 暂时性死区：ES6规定，let/const 命令会使区块形成封闭的作用域。若在声明之前使用变量，就会报错。
+  总之，在代码块内，使用 let 命令声明变量之前，该变量都是不可用的。
+  这在语法上，称为 “暂时性死区”（ temporal dead zone，简称 TDZ）。
 
-### 事件
-- 面试题
-  - 写一个通用的事件绑定函数
-  - 
-- 知识点
-  - 事件绑定
-  - 事件冒泡
-  - 事件代理
-    - 代码简洁
-    - 减少浏览器内存占用
-    - 但是，不要滥用
+### typeof 返回哪些类型
+  - undefined string number boolean symbol
+  - object（注意，typeof null === 'object'）
+  - function
+### 列举强制类型转换和隐式类型转换
+  - 强制：parseInt parseFloat toString
+  - 隐式：if 、逻辑运算、 == 、+拼接字符串
+
+### 手写深度比较 isEqual
+
+### split() join()区别
+### 数组的 pop push unshift shift
+
+### 数组的API有哪些是纯函数
+  - 纯函数：1.不改变原数组；2、返回一个数组。如concat map filter slice
+  - 非纯函数：push pop shift unshift forEach some every reduce
+  - reduce `arr.reduce(callback(accumulator, currentValue[, index[, array]])[, initialValue])`
