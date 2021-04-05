@@ -32,13 +32,15 @@ module.exports = {
         {
           title: '剑指offer',
           children: [
-            '/article/剑指offer/01-二维数组中的查找',
-            '/article/剑指offer/02-替换空格',
-            '/article/剑指offer/03-从尾到头打印链表',
-            '/article/剑指offer/04-重建二叉树',
-            '/article/剑指offer/参考资料'
+            '/article/剑指offer/总览'
           ]
         },
+        {
+          title: '前端知识点拾遗',
+          children: [
+            '/article/碎片知识/前端知识点拾遗'
+          ]
+        }
         // {
         //   title: 'JS进阶',
         //   children: [
