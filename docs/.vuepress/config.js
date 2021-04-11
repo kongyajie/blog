@@ -40,7 +40,7 @@ module.exports = {
           children: [
             '/article/碎片知识/前端知识点拾遗'
           ]
-        }
+        },
         // {
         //   title: 'JS进阶',
         //   children: [
@@ -93,13 +93,13 @@ module.exports = {
         //     '/article/面试题集/javascript'
         //   ]
         // },
-        // {
-        //   title: '综合',
-        //   children: [
-        //     '/article/综合/【自检】前端知识清单',
-        //     '/article/综合/【自检】前端知识清单（附解答）',
-        //   ]
-        // },
+        {
+          title: '综合',
+          children: [
+            '/article/综合/【自检】前端知识清单',
+            '/article/综合/【自检】前端知识清单（附解答）',
+          ]
+        },
         // {
         //   title:'电脑技术',
         //   children: [
