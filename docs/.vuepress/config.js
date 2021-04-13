@@ -30,9 +30,9 @@ module.exports = {
           ]
         },
         {
-          title: '剑指offer',
+          title: '算法题',
           children: [
-            '/article/剑指offer/总览'
+            '/article/算法题/总览'
           ]
         },
         {
