@@ -16,7 +16,6 @@ module.exports = {
             '/article/前端知识体系/总览',
             '/article/前端知识体系/CSS面试题',
             '/article/前端知识体系/JS基础',
-            '/article/前端知识体系/JS代码',
             '/article/前端知识体系/JS-Web-Api',
             '/article/前端知识体系/运行环境',
             '/article/前端知识体系/HTTP协议',
