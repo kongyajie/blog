@@ -51,28 +51,12 @@ module.exports = {
         //     '/article/JS进阶/浮点数精度问题'
         //   ]
         // },
-        // {
-        //   title: 'JS编程',
-        //   children: [
-        //     '/article/JS编程/防抖和节流.md',
-        //     '/article/JS编程/数组去重.md',
-        //     '/article/JS编程/类型判断.md',
-        //     '/article/JS编程/深拷贝浅拷贝.md',
-        //     '/article/JS编程/extend函数.md',
-        //     '/article/JS编程/数组最大值.md',
-        //     '/article/JS编程/数组的扁平化.md',
-        //     '/article/JS编程/数组中查找指定元素.md',
-        //     '/article/JS编程/jQuery的each方法.md',
-        //     '/article/JS编程/判断两个对象相等.md',
-        //     '/article/JS编程/函数柯里化.md',
-        //     '/article/JS编程/偏函数.md',
-        //     '/article/JS编程/惰性函数.md',
-        //     '/article/JS编程/函数记忆.md',
-        //     '/article/JS编程/递归.md',
-        //     '/article/JS编程/乱序.md',
-        //     '/article/JS编程/解读V8排序源码.md'
-        //   ]
-        // },
+        {
+          title: 'JS编程',
+          children: [
+            '/article/JS编程/总览.md'
+          ]
+        },
         // {
         //   title: 'underscore',
         //   children: [
