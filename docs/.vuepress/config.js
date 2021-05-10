@@ -14,7 +14,7 @@ module.exports = {
           title: '前端知识体系',
           children: [
             '/article/前端知识体系/总览',
-            '/article/前端知识体系/CSS面试题',
+            '/article/前端知识体系/CSS',
             '/article/前端知识体系/JS基础',
             '/article/前端知识体系/JS-Web-Api',
             '/article/前端知识体系/运行环境',
