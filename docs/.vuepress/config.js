@@ -40,16 +40,16 @@ module.exports = {
             '/article/碎片知识/前端知识点拾遗'
           ]
         },
-        // {
-        //   title: 'JS进阶',
-        //   children: [
-        //     '/article/JS进阶/JavaScript代码的执行机制',
-        //     '/article/JS进阶/你真的掌握变量和类型了吗（一）数据类型',
-        //     '/article/JS进阶/你真的掌握变量和类型了吗（二）类型转换',
-        //     '/article/JS进阶/如何写出一个惊艳面试官的深拷贝',
-        //     '/article/JS进阶/浮点数精度问题'
-        //   ]
-        // },
+        {
+          title: 'JS进阶',
+          children: [
+            '/article/JS进阶/JavaScript代码的执行机制',
+            '/article/JS进阶/你真的掌握变量和类型了吗（一）数据类型',
+            '/article/JS进阶/你真的掌握变量和类型了吗（二）类型转换',
+            '/article/JS进阶/如何写出一个惊艳面试官的深拷贝',
+            '/article/JS进阶/浮点数精度问题'
+          ]
+        },
         {
           title: 'JS编程',
           children: [
