@@ -8,8 +8,8 @@
 - display:block/table；div h1 h2 ul li ol p 等
 - display:inline/inline-block；span a input button 等
 
-## 3.盒模型宽度计算：
-- 在 标准盒子模型中，width 和 height 指的是内容区域的宽度和高度。增加内边距、边框和外边距不会影响内容区域的尺寸，但是会增加元素框的总尺寸。
+## 3.盒模型宽度计算
+- 标准盒子模型中，width 和 height 指的是内容区域的宽度和高度。增加内边距、边框和外边距不会影响内容区域的尺寸，但是会增加元素框的总尺寸。
 - IE盒子模型中，width 和 height 指的是内容区域+border+padding的宽度和高度。
 
 - 标准盒模型content-box：offsetWidth = 内容宽度+内边距+边框（无外边距margin）
@@ -51,11 +51,11 @@
 - flex: 1 => flex: 0 1 auto
 
 ## 8.CSS定位
-### 1.absolute 和 relative 分别依据什么定位？
+### absolute 和 relative 分别依据什么定位？
 - relative 依据自身定位
 - absolute 依据最近一层的定位元素定位（absolute/relative/fixed直到body）
 
-### 2.居中对齐有哪些实现方式？
+### 居中对齐有哪些实现方式？
 
 - 水平居中 
 inline元素：text-align:center
@@ -68,7 +68,7 @@ absolute 元素：top:50% + margin-top 负值 （需要知道宽高）
 absolute 元素：left:50%, top:50%, translate:transform(-50%, -50%)
 absolute 元素：top,left,bottom,right:0 + margin:auto
 
-### 3.line-height 如何继承
+### line-height 如何继承
 1. 具体数值，则继承该值
 2. 比例：如2/1.5，则继承该比例
 3. 百分比，如200%，则继承计算出来的值
@@ -98,24 +98,23 @@ absolute 元素：top,left,bottom,right:0 + margin:auto
 - vw 网页视口宽度window.innerWidth的 1/100
 - vmax 取两者最大值；vmin 取两者最小值
 
-## 11、CSS面试总结
+## 移动端适配和性能优化
+
+[参考](https://blog.csdn.net/frontend_frank/article/details/106110664)
+
+## CSS问题总览
 - 1. 如何理解语义化？（人、机器的角度）
 - 2. 块状元素&内联元素？
 - 3. 盒模型宽度计算？（content-box、border-box）
-- 4. margin纵向重叠问题？
-- 5. margin负值问题？（top/left负值会移动，right/bottom不会移动）
-- 6. BFC的理解和应用
-- 7. float布局 
-- 8. absolute和relative定位
-- 9. 居中对齐
-- 10. line-height如何继承
-- 11. px/em/rem
-- 12. 响应式布局方案
-- 13. CSS3动画
-
-
-## 移动端适配和性能优化
-[参考](https://blog.csdn.net/frontend_frank/article/details/106110664)
+- 4. margin纵向重叠问题？margin负值问题？（top/left负值会移动，right/bottom不会移动）
+- 5. BFC的理解和应用
+- 6. float布局/grid布局
+- 7. absolute和relative定位
+- 8. 居中对齐
+- 9. line-height如何继承
+- 10. px/em/rem
+- 11. 响应式布局方案
+- 12. CSS3动画
 
 ## requestAnimationFrame
 - setTimeout setInterval 可能不精确（单线程+宏任务最后执行）

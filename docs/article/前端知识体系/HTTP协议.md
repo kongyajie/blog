@@ -97,7 +97,6 @@ xhr.status
     - Cache-Control Expires
     - Last-Modified If-Modified-Since
     - Etag If-None-Match
-    
 ### 什么是 Restful API
 
 - ①　一种新的API设计方法
@@ -141,7 +140,7 @@ xhr.status
   - HEAD
   - GET
   - POST
-  
+
 -（2）HTTP的头信息不超出以下几种字段：
   - Accept
   - Accept-Language
@@ -153,6 +152,6 @@ xhr.status
 [cors](https://www.ruanyifeng.com/blog/2016/04/cors.html)
 
 ### HTTP2 
-- 多路复用：建立连接后，可同时发送多个七扭去
+- 多路复用：建立连接后，可同时发送多个请求
 - 首部压缩：http请求的头部使用字符串代替键值对
 - 支持服务器推送：引入了 server push
