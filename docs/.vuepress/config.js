@@ -67,6 +67,13 @@ module.exports = {
           children: [
             
           ]
+        },
+        {
+          title: '开源项目',
+          children: [
+            '/article/开源项目/总览',
+            '/article/开源项目/如何写自己的undercore'
+          ]
         }
         // {
         //   title: 'JS进阶',
