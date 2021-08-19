@@ -1,24 +1,48 @@
+/**
+ * 注意事项：
+ * 1、和图标/图片等静态资源相关的 其 '/' 默认指向的是 docs/.vuepress/public/
+ * 2、和侧边栏/导航栏相关的地址配置 其 '/' 默认指向的是 docs/
+ * 3、侧边栏/导航栏指向.md文件的需要先建立相关.md文件，不然会报404或者页面空白
+ */
+
 module.exports = {
-  title: 'AaronKong的blog',
-  description: '系统性学习，打造完善的知识体系',
+  title: 'AaronKong的blog', // 页签标题
+  description: '系统性学习，打造完善的知识体系', // meta 中的描述文字，意义不大，SEO用
   base: '/',
+  head: [
+    ['script', {}, `
+      <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?e864a64a0fefae1239747c553f0d6579";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script>
+    `]
+  ],
   themeConfig: {
-    sidebarDepth: 2,
-    lastUpdated: 'Last Updated',
+    sidebarDepth: 2, // 将同时提取markdown中h2 和 h3 标题，显示在侧边栏上
+    lastUpdated: '上次更新',// 文档更新时间：每个文件git最后提交的时间
+    // 顶部导航栏
     nav: [
+      { text: '数据结构与算法', link: '/article/算法题/总览' },
+      { text: 'JS编程', link: '/article/JS编程/总览' },
+      { text: '设计模式', link: '/article/设计模式/总览' },
       { text: 'github', link: 'https://github.com/kongyajie' },
     ],
     sidebar: {
       '/article/': [
         {
-          title: '前端知识体系',
+          title: '前端基础',
           children: [
-            '/article/前端知识体系/总览',
-            '/article/前端知识体系/CSS',
-            '/article/前端知识体系/JS基础',
-            '/article/前端知识体系/JS-Web-Api',
-            '/article/前端知识体系/运行环境',
-            '/article/前端知识体系/HTTP协议',
+            '/article/前端基础/总览',
+            '/article/前端基础/CSS/常见问题',
+            '/article/前端基础/JS/常见问题',
+            '/article/前端基础/JSWeb/常见问题',
+            '/article/前端基础/运行环境',
+            '/article/前端基础/HTTP/常见问题',
           ]
         },
         {
@@ -29,33 +53,33 @@ module.exports = {
           ]
         },
         {
-          title: '算法题',
+          title: '前端专题',
           children: [
-            '/article/算法题/总览'
+            
           ]
         },
         {
-          title: '前端知识点拾遗',
+          title: '前端拾遗',
           children: [
             '/article/碎片知识/前端知识点拾遗'
           ]
         },
         {
-          title: 'JS进阶',
+          title: '源码解析',
           children: [
-            '/article/JS进阶/JavaScript代码的执行机制',
-            '/article/JS进阶/你真的掌握变量和类型了吗（一）数据类型',
-            '/article/JS进阶/你真的掌握变量和类型了吗（二）类型转换',
-            '/article/JS进阶/如何写出一个惊艳面试官的深拷贝',
-            '/article/JS进阶/浮点数精度问题'
+            
           ]
-        },
-        {
-          title: 'JS编程',
-          children: [
-            '/article/JS编程/总览.md'
-          ]
-        },
+        }
+        // {
+        //   title: 'JS进阶',
+        //   children: [
+        //     '/article/JS进阶/JavaScript代码的执行机制',
+        //     '/article/JS进阶/你真的掌握变量和类型了吗（一）数据类型',
+        //     '/article/JS进阶/你真的掌握变量和类型了吗（二）类型转换',
+        //     '/article/JS进阶/如何写出一个惊艳面试官的深拷贝',
+        //     '/article/JS进阶/浮点数精度问题'
+        //   ]
+        // },
         // {
         //   title: 'underscore',
         //   children: [
@@ -76,14 +100,14 @@ module.exports = {
         //     '/article/面试题集/javascript'
         //   ]
         // },
-        {
-          title: '综合',
-          children: [
-            '/article/综合/【自检】前端知识清单',
-            '/article/综合/【自检】前端知识清单（附解答）',
-            '/article/综合/深度学习'
-          ]
-        },
+        // {
+        //   title: '综合',
+        //   children: [
+        //     '/article/综合/【自检】前端知识清单',
+        //     '/article/综合/【自检】前端知识清单（附解答）',
+        //     '/article/综合/深度学习'
+        //   ]
+        // },
         // {
         //   title:'电脑技术',
         //   children: [
