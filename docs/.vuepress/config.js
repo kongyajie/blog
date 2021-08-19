@@ -116,6 +116,10 @@ module.exports = {
         // },
       ]
     }
-  }
+  },
+  markdown: {
+    // 显示代码行号
+    lineNumbers: true
+  },
 };
 
