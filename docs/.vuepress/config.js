@@ -25,7 +25,7 @@ module.exports = {
     lastUpdated: '上次更新',// 文档更新时间：每个文件git最后提交的时间
     // 顶部导航栏
     nav: [
-      { text: '数据结构与算法', link: '/article/算法题/总览' },
+      { text: '数据结构与算法', link: '/article/数据结构与算法/总览' },
       { text: 'JS编程', link: '/article/JS编程/总览' },
       { text: '设计模式', link: '/article/设计模式/总览' },
       { text: 'github', link: 'https://github.com/kongyajie' },
