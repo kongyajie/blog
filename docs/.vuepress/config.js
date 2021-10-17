@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  title: 'AaronKong的blog', // 页签标题
+  title: '前端AK君', // 页签标题
   description: '系统性学习，打造完善的知识体系', // meta 中的描述文字，意义不大，SEO用
   base: '/',
   head: [
@@ -25,9 +25,6 @@ module.exports = {
     lastUpdated: '上次更新',// 文档更新时间：每个文件git最后提交的时间
     // 顶部导航栏
     nav: [
-      { text: '数据结构与算法', link: '/article/数据结构与算法/总览' },
-      { text: 'JS编程', link: '/article/JS编程/总览' },
-      { text: '设计模式', link: '/article/设计模式/总览' },
       { text: 'github', link: 'https://github.com/kongyajie' },
     ],
     sidebar: {
@@ -35,25 +32,31 @@ module.exports = {
         {
           title: '前端基础',
           children: [
-            '/article/前端基础/总览',
-            '/article/前端基础/CSS/常见问题',
-            '/article/前端基础/JS/常见问题',
-            '/article/前端基础/JSWeb/常见问题',
-            '/article/前端基础/运行环境',
-            '/article/前端基础/HTTP/常见问题',
+            '/article/前端基础/JS/JavaScript系列介绍',
+            '/article/前端基础/JS/JavaScript系列之1-概览',
+            '/article/前端基础/JS/JavaScript系列之2-运行过程',
+            '/article/前端基础/JS/JavaScript系列之3-类型',
+            '/article/前端基础/JS/JavaScript系列之4-原型与原型链',
+            '/article/前端基础/JS/JavaScript系列之5-小测验',
+            '/article/前端基础/浏览器/浏览器工作原理系列介绍',
+            '/article/前端基础/浏览器/浏览器工作原理系列之1-发展历史',
+            '/article/前端基础/浏览器/浏览器工作原理系列之2-页面循环系统',
+            '/article/前端基础/浏览器/浏览器工作原理系列之3-如何从URL到页面显示的？',
+            '/article/前端基础/浏览器/浏览器工作原理系列之4-如何进行性能优化？',
+            '/article/前端基础/浏览器/浏览器工作原理系列之5-如何与服务器通讯？',
+            '/article/前端基础/浏览器/浏览器工作原理系列之6-如何保证浏览器安全？',
+            '/article/前端基础/浏览器/浏览器工作原理系列之7-未来发展方向？',
           ]
         },
         {
           title: '前端框架',
           children: [
-            '/article/前端框架/总览',
-            '/article/前端框架/vue',
-          ]
-        },
-        {
-          title: '前端专题',
-          children: [
-            
+            '/article/前端框架/vue/Vue系列之1-概览',
+            '/article/前端框架/vue/Vue系列之2-使用',
+            '/article/前端框架/vue/Vue系列之3-周边工具',
+            '/article/前端框架/vue/Vue系列之4-原理',
+            '/article/前端框架/vue/Vue系列之5-常见问题',
+            '/article/前端框架/vue/Vue系列之6-Vue3',
           ]
         },
         {
@@ -63,18 +66,41 @@ module.exports = {
           ]
         },
         {
-          title: '源码解析',
+          title: '前端面试',
           children: [
-            
+            '/article/前端面试/总览',
+            '/article/前端基础/CSS/常见问题',
+            '/article/前端基础/JS/常见问题',
+            '/article/前端基础/JSWeb/常见问题',
+            '/article/前端基础/运行环境',
+            '/article/前端基础/HTTP/常见问题',
           ]
         },
         {
-          title: '开源项目',
+          title: '数据结构与算法',
           children: [
-            '/article/开源项目/总览',
-            '/article/开源项目/如何写自己的undercore'
+            '/article/数据结构与算法/总览'
+          ]
+        },
+        {
+          title: 'JS编程',
+          children: [
+            '/article/JS编程/总览'
+          ]
+        },
+        {
+          title: '设计模式',
+          children: [
+            '/article/设计模式/总览'
           ]
         }
+        // {
+        //   title: '开源项目',
+        //   children: [
+        //     '/article/开源项目/总览',
+        //     '/article/开源项目/如何写自己的undercore'
+        //   ]
+        // }
         // {
         //   title: 'JS进阶',
         //   children: [
