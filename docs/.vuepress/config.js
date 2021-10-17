@@ -57,12 +57,12 @@ module.exports = {
             '/article/前端框架/vue/Vue系列之4-原理',
             '/article/前端框架/vue/Vue系列之5-常见问题',
             '/article/前端框架/vue/Vue系列之6-Vue3',
-          ]
-        },
-        {
-          title: '前端拾遗',
-          children: [
-            '/article/碎片知识/前端知识点拾遗'
+            '/article/前端框架/react/React系列之1-概览',
+            '/article/前端框架/react/React系列之2-使用',
+            '/article/前端框架/react/React系列之3-周边工具',
+            '/article/前端框架/react/React系列之4-原理',
+            '/article/前端框架/react/React系列之5-常见问题',
+            '/article/前端框架/react/React系列之6-hooks',
           ]
         },
         {
@@ -74,6 +74,12 @@ module.exports = {
             '/article/前端基础/JSWeb/常见问题',
             '/article/前端基础/运行环境',
             '/article/前端基础/HTTP/常见问题',
+          ]
+        },
+        {
+          title: '前端拾遗',
+          children: [
+            '/article/碎片知识/前端知识点拾遗'
           ]
         },
         {
