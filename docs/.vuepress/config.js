@@ -168,5 +168,25 @@ module.exports = {
     // 显示代码行号
     lineNumbers: true
   },
+  plugins: [
+    [
+      'vuepress-plugin-comment',
+      {
+        choosen: 'valine', 
+        // options选项中的所有参数，会传给Valine的配置
+        options: {
+          el: '#valine-vuepress-comment',
+          appId: 'YuQM59IXohGB2oQVnkedKOMH-gzGzoHsz',
+          appKey: 'YUIvIzLbKPuneLoqKGdaNxBT',
+          notify: false, //邮箱通知，可关闭
+          verify: false, //反人类的算术验证码，建议关闭
+          avatar: 'mm', //头像，默认即可
+          visitor: true,//访问计数
+          placeholder: '欢迎留言讨论~',
+          path: '<%- frontmatter.to.path %>' // 加上这行，会根据当前页面路由加载评论，评论保存在 LeanCloud 上
+        }
+      }
+    ]
+  ]
 };
 
