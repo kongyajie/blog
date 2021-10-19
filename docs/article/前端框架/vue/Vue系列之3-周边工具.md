@@ -6,7 +6,7 @@
 - vue-router
 - vuex
 
-## vue-router
+## 一、vue-router
 Vue Router 是 Vue.js 官方的路由管理器。它和 Vue.js 的核心深度集成，让构建单页面应用变得易如反掌。包含的功能有：
 
 * 嵌套的路由/视图表
@@ -18,7 +18,7 @@ Vue Router 是 Vue.js 官方的路由管理器。它和 Vue.js 的核心深度�
 * HTML5 历史模式或 hash 模式，在 IE9 中自动降级
 * 自定义的滚动条行为
 
-### Hash模式 vs History模式
+### 1、Hash模式 vs History模式
 #### History API
 
 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/History_API)
@@ -117,12 +117,12 @@ DOM window 对象通过 history 对象提供了对浏览器的会话历史的访
 </html>
 ```
 
-### 编程式导航
+### 2、编程式导航
 - router.push
 - router.replace
 - router.go(n)
 
-### 导航守卫
+### 3、导航守卫
 - 全局前置守卫：`router.beforeEach((to, from, next) => {// ...})`
 - 全局解析守卫：`router.beforeResolve`
 - 全局后置钩子：`router.afterEach((to, from) => {// ...})`
@@ -180,7 +180,7 @@ const Foo = {
 11. 触发 DOM 更新。
 12. 调用 beforeRouteEnter 守卫中传给 next 的回调函数，创建好的组件实例会作为回调函数的参数传入。
 
-### 路由元信息
+### 4、路由元信息
 定义路由的时候可以配置 meta 字段：
 
 ```js
@@ -213,7 +213,7 @@ router.beforeEach((to, from, next) => {
 })
 ```
 
-### 滚动行为
+### 5、滚动行为控制
 
 使用前端路由，当切换到新路由时，想要页面滚到顶部，或者是保持原先的滚动位置，就像重新加载页面那样。 vue-router 能做到，而且更好，它让你可以自定义路由切换时页面如何滚动。
 
@@ -227,7 +227,7 @@ const router = new VueRouter({
 })
 ```
 
-### 路由懒加载
+### 6、路由懒加载
 打包构建应用时，JavaScript 包会变得非常大，影响页面加载。如果我们能把不同路由对应的组件分割成不同的代码块，然后当路由被访问的时候才加载对应组件，这样就更加高效了。
 
 结合 Vue 的**异步组件**和 Webpack 的**代码分割功能**，轻松实现路由组件的懒加载。
@@ -246,8 +246,42 @@ const Baz = () => import(/* webpackChunkName: "group-foo" */ './Baz.vue')
 ```
 Webpack 会将任何一个异步模块与相同的块名称组合到相同的异步块中。
 
-## vuex
+## 二、vuex
+> vuex 是一个专为 Vue.js 应用程序开发的 **状态管理模式** 。
+它采用 **集中式存储** 管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。
 
+### 理念
+通过定义和隔离状态管理中的各种概念并通过强制规则维持视图和状态间的独立性，我们的代码将会变得更结构化且易维护。
+
+包含以下部分：
+- state，驱动应用的数据源；
+- view，以声明方式将 state 映射到视图；
+- actions，响应在 view 上的用户输入导致的状态变化
+
+![](https://oss-1252175178.cos.ap-shanghai.myqcloud.com/vuex.png)
+
+### 核心概念
+- **state** 数据源仓库
+- **getters** 可以认为是 store 的计算属性
+- **mutations** 更改 Vuex 的 store 中的状态的唯一方法是提交 mutation
+- **actions** Action 类似于 mutation，不同在于：Action 提交的是 mutation，而不是直接变更状态；Action 可以包含任意异步操作。
+- **module** 将 store 分割成模块（module）。每个模块拥有自己的 state、mutation、action、getter、甚至是嵌套子模块
+
+### 项目结构
+Vuex 并不限制你的代码结构。但是，它规定了一些需要遵守的规则：
+
+1. 应用层级的状态应该集中到单个 store 对象中。
+2. 提交 mutation 是更改状态的唯一方法，并且这个过程是同步的。
+3. 异步逻辑都应该封装到 action 里面。
+
+### 注意点
+如果应用简单，不推荐使用 vuex
 ## 总结
 
+本文主要介绍了 vue-router 和 vuex ：
+- vue-router 的部分，首先介绍了 hash 和 history 两种模式的原理和区别，然后介绍编程式导航、导航守卫、元信息、切换路由时的滚动控制等，最后是路由懒加载
+- vuex 的部分，首先介绍 vuex 要解决的问题，然后是状态流转图、包含的核心概念和规则，最后提出注意点。
+
 ## 参考资料
+- [vue Router官网](https://router.vuejs.org/zh/)
+- [vuex官网](https://vuex.vuejs.org/zh/)
