@@ -78,12 +78,7 @@ module.exports = {
         {
           title: '前端面试',
           children: [
-            '/article/前端面试/总览',
-            '/article/前端基础/CSS/常见问题',
-            '/article/前端基础/JS/常见问题',
-            '/article/前端基础/JSWeb/常见问题',
-            '/article/前端基础/运行环境',
-            '/article/前端基础/HTTP/常见问题',
+            '/article/前端面试/总览'
           ]
         },
         {

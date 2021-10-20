@@ -357,6 +357,3 @@ render: function (createElement) {
 - [diff算法图解动画](https://www.bilibili.com/video/BV1b5411V7i3?from=search&seid=4125072074822008044)
 - [Vue3.0是如何变快的](https://developer.51cto.com/art/202010/628347.htm)
 
-## 待完善
-- 前端路由
-
