@@ -9,7 +9,7 @@
 #### JSX的本质&vdom和diff算法
 - JSX即createElement函数
 - 执行生成vnode
-- path(elem,vnode) patch(vnode,newVnode)
+- patch(elem,vnode) patch(vnode,newVnode)
 
 #### 合成事件机制
 - 更好的兼容性和跨平台（摆脱DOM的限制，比如在移动端使用时不需重新写一套）
