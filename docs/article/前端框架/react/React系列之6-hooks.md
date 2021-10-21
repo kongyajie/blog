@@ -72,7 +72,7 @@ todo...
 ### Hooks调用顺序必须保持一致
 - 无论是render还是re-render，Hooks调用顺序必须保持一致
 - 如果Hooks出现在循环、判断里，则无法保证顺序一致
-- Hooks严重依赖于调用顺序！重要！1
+- Hooks严重依赖于调用顺序！重要！
 
 ### class做组件逻辑复用的问题
 
@@ -104,12 +104,10 @@ todo...
 #### 6、Hooks相比HOC和props render有哪些优点
 
 
-我的疑问：
-- 如何看待hooks的作用？功能增强？和现有的功能如vue computed对比？
-- 不同hooks之间的关系？如 useEffect和useRefs
-- 带hooks的函数组件渲染和更新是怎么个逻辑？
-- vue3.0和react hooks的关系？
-- vue 和 react 对比
+## 我的疑问
+### 如何看待hooks的作用？功能增强？和现有的功能如vue computed对比？
+### 不同hooks之间的关系？如 useEffect和useRefs
+### 带hooks的函数组件渲染和更新是怎么个逻辑？
 
 
 ## 总结

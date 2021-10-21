@@ -1,27 +1,22 @@
 # React系列之5-常见问题
-
-## 组件之间如何通讯？
-- 父子组件 props
-- 自定义事件
-- Redux 和 Context
-
 ## JSX本质是什么？
 - createElement函数
 - 执行后返回vnode
-
-## Context是什么，如何应用？
-- 父组件向其所有子孙组件传递信息
-- 如一些简单的公共信息：主题色、语言等
-- 复杂的公共信息，请用redux
 
 
 ## ShouldComponentUpdate用途
 - 性能优化
 - 配置“不可变值”一起使用，否则可能出错
 
-## redux单向数据流
-画图
+## PureComponent 有何区别
+- 实现了浅比较的 SCU
+- 优化性能
+- 但要结合不可变值使用
 
+## React事件和DOM事件的区别
+- 所有事件挂载到 document 上
+- event不是原生的，是 `SyntheticEvent` 合成事件对象
+- dispatchEvent
 ## setState场景题
 同步/异步/合并修改
 
@@ -35,8 +30,24 @@
 - 注意scu
 
 ## React发起ajax应该在哪个生命周期
-- 同vue
 - componentDidMount
+
+理由：
+1. 请求时异步的，使用 `componentWillMount` 无法避免二次渲染
+2. react未来版本中 `componentWillMount` 可能会被调用多次
+
+[In React.js should I make my initial network request in componentWillMount or componentDidMount?](https://stackoverflow.com/questions/41612200/in-react-js-should-i-make-my-initial-network-request-in-componentwillmount-or-co/41612993)
+
+## 组件之间如何通讯？
+- 父子组件 props
+- 自定义事件
+- Redux 和 Context
+
+## Context是什么，如何应用？
+- 父组件向其所有子孙组件传递信息
+- 如一些简单的公共信息：主题色、语言等
+- 复杂的公共信息，请用redux
+
 
 ## 渲染列表，为何使用Key
 - 同Vue。必须用key，且不能是index和random
@@ -45,7 +56,6 @@
 
 ## 函数组件和class组件区别
 - 纯函数
-
 
 ## 什么是受控组件？
 - 表单的值受state控制
@@ -59,7 +69,11 @@
 ## 多个组件有公共逻辑，该如何抽离
 - 高阶组件roc
 - Render Props
-- mixin已被react废弃
+- mixin（已被react废弃）
+
+
+## redux单向数据流
+画图
 
 ## redux如何进行异步请求
 - 使用异步action
@@ -70,21 +84,11 @@
 - import
 - Suspense
 
-## PureComponent 有何区别
-- 实现了浅比较的 SCU
-- 优化性能
-- 但要结合不可变值使用
-
-## React事件和DOM事件的区别
-- 所有事件挂载到 document 上
-- event不是原生的，是SyntheticEvent合成事件对象
-- dispatchEvent
 
 ## React性能优化
 - 渲染列表时加key
 - 自定义事件、DOM事件及时销毁
 - 合理使用异步组件
-- 减少函数bind this次数
 - 合理使用scu、pureComponent和memo
 - 合理使用 Immutable.js
 - Webpack优化
@@ -98,6 +102,11 @@
 - 都使用vdom操作DOM
 
 不同点：
-- React使用JSX拥抱JS，Vue使用模板拥抱HTML
-- React是函数式编程，Vue声明式编程
-- React更多需要自力更生（如scu），Vue把想要的都给你（computed、watch）
+- React 使用 JSX 拥抱 JS，Vue 使用模板拥抱 HTML
+- React 是函数式编程，Vue声明式编程
+- React 更多需要自力更生（如scu），Vue把想要的都给你（computed、watch），提供了众多语法糖
+
+## React的样式文件怎么管理？
+- Vue组件提供了 `.vue单文件组件` 的写法，可以在组件内定义和使用局部样式，那React组件内使用的样式如何组织呢？
+
+## 为什么事件中的this是undefined？
