@@ -1,6 +1,10 @@
-# JS原型
-## 实现一个Person类
+# JS原型和原型链
+
+在介绍原型之前，我们先来看一个例子
+
 > 目标：JS实现一个 Person 类，包含一些属性，和一些方法
+
+## 一、实现一个Person类
 
 ### 第一版
 
@@ -208,7 +212,7 @@ aaron.play();
 vera.sleep();
 ```
 
-## 小结
+### 小结
 
 上面的示例中，我们使用了几种不同的方式模拟实现 Person 类。
 
@@ -216,19 +220,19 @@ vera.sleep();
 
 下面我们熟悉一下它们。
 
-### prototype
+## 二、prototype
 
 > prototype 是所有JS函数都有的一个属性，我们可以用它在实例间共享属性和方法
 
-### Object.create
+## 三、Object.create
 
 > 定义：Object.create()方法创建一个新对象，使用现有的对象来提供新创建的对象的__proto__ 
 > 语法：Object.create(proto，[propertiesObject])
 > - MDN
 
-简单说，`Object.create(proto)` 方法帮助我们创建了一个新对象，这个对象的 `__proto__` 属性指向 `proto`，然后这个对象。
+简单说，`Object.create(proto)` 方法帮助我们创建了一个新对象，这个对象的 `__proto__` 属性指向 `proto`，然后返回这个对象。
 
-**下面我们来测试一下：**
+**我们来测试一下：**
 
 ```js
 var obj = Object.create(null)
@@ -271,7 +275,7 @@ var obj = Object.myCreate(o)
 obj.constructor // Object
 ```
 
-从第一行代码 `let obj = {}` 中我们发现，创建 `obj` 的时候，构造函数是 `Object` ，因此创建出来的对象，其构造函数
+从第一行代码 `let obj = {}` 中我们发现，创建 `obj` 的时候，构造函数是 `Object` ，因此创建出来的对象，其构造函数就是 `Object`
 
 **上面的示例中，我们是用对象 `o` 作为原型参数，下面我们看看用 `o.__proto__` 会是什么效果：**
 
@@ -334,7 +338,7 @@ obj // { b: 10 }
 
 同样的，这个例子中，由于 `obj.b` 调用的是 b 属性的 `访问器描述符` ，因此每次都会返回 `10` 。
 
-### new
+## 四、new
 
 > 定义：`new 运算符` 创建一个**用户定义的对象类型**的实例或**具有构造函数的内置对象**的实例。 - MDN
 > 语法：`new constructor[([arguments])]`
@@ -369,7 +373,7 @@ function Person(name, age) {
 var p = new Person('Aaron', 31)
 ```
 
-### class
+## 五、class
 
 > **class 声明**创建一个基于原型继承的具有给定名称的新类。
 
@@ -421,7 +425,7 @@ var Person = /*#__PURE__*/function () {
 ```
 
 
-## 创建对象的几种方式对比
+## 六、创建对象的几种方式对比
 * `{}`
 * `new Object()`
 * `Object.create()`
@@ -432,9 +436,9 @@ var obj2 = {a:1}
 var obj3 = new Object({a:1})
 ```
 
-`obj2` 和 `obj3` 是同等的，都是新建一个 `{a:1}` 的对象。
+`obj2` 和 `obj3` 是等价的，`{a:1}` 是 `new Object({a:1})` 的语法糖。
 
-内部做了下面几个操作：
+obj3 new 的内部做了下面几个操作：
 1. 创建一个新的对象 `obj`
 2. 将这个对象的 `__proto__` 指向构造函数也就是 `Object` 的原型，即 `obj.__proto__ = Object.prototype`
 3. 执行这个构造函数，并以第一步创建的对象 `obj` 作为 this 上下文，即 `let res = Object.call(obj, ...arg)`
@@ -444,16 +448,15 @@ var obj3 = new Object({a:1})
 
 而 obj1 则是新建一个空对象，然后将这个对象的 `__proto__` 指向 `{a:1}` 这个对象，所以 `obj1` 本身并没有 `a` 属性，而是在原型链上可以访问到 `{a:1}` 上的 `a` 属性
 
-## 一些概念
-* `prototype`
-* `__proto__`
-* `constructor`
-* `instanceof`
+## 七、一些概念
 
-`prototype` 是构造函数上的属性，用来在不同的实例间共享属性和方法
-`__proto__` 是对象上的属性，指向这个对象的原型
-`constructor` 是对象的构造函数，指向创建这个对象的构造函数
-`instanceof` 是判断一个对象是否为这个构造函数的实例
+*`prototype` 是构造函数上的属性，用来在不同的实例间共享属性和方法
+
+*`__proto__` 是对象上的属性，指向这个对象的原型
+
+*`constructor` 是对象的构造函数，指向创建这个对象的构造函数
+
+*`instanceof` 是判断一个对象是否为这个构造函数的实例
 
 ```js
 var obj = new Object()
@@ -462,13 +465,13 @@ obj.constructor === Object // true
 obj instanceof Object // true
 ```
 
-## Object对象上的属性和方法
+## 八、Object对象上的属性和方法
 
-### 创建相关
+### 1、创建相关
 - `Object.create(proto，[propertiesObject])` 方法创建一个新对象，使用现有的对象来提供新创建的对象的__proto__
 - `Object.assign(target, ...sources)` 方法用于将所有可枚举属性的值从一个或多个源对象分配到目标对象。它将返回目标对象。
 
-### 属性相关
+### 2、属性相关
 - `Object.defineProperties(obj, props)` 方法直接在一个对象上定义新的属性或修改现有属性，并返回该对象。
 - `Object.getOwnPropertyNames(obj)` 方法返回一个由指定对象的所有自身属性的属性名（**包括不可枚举属性但不包括Symbol值作为名称的属性**）组成的数组。
 - `Object.getOwnPropertyDescriptors(obj)` 方法用来获取一个对象的所有自身属性的描述符。
@@ -491,13 +494,13 @@ obj instanceof Object // true
 
 - `Object.values(obj)` 方法返回一个给定对象自身的所有可枚举属性值的数组，值的顺序与使用for...in循环的顺序相同 ( 区别在于 for-in 循环枚举原型链中的属性 )。
 
-### 原型相关
+### 3、原型相关
 - `Object.setPrototypeOf()` 方法设置一个指定的对象的原型 ( 即, 内部[[Prototype]]属性）到另一个对象或  null。**性能原因建议使用 Object.create 替代**
 
 - `Object.getPrototypeOf(obj)` 方法返回指定对象的原型（内部[[Prototype]]属性的值）。
 - `prototypeObj.isPrototypeOf(object)` 方法用于测试一个对象是否存在于另一个对象的原型链上。
 
-### 其他
+### 4、其他
 - `Object.is(value1, value2)` 方法判断两个值是否为同一个值。
 - `obj.toString()` 方法返回一个表示该对象的字符串。
 - `obj.valueOf()` 方法返回指定对象的原始值。
@@ -507,10 +510,10 @@ let arr = [];
 Object.getPrototypeOf(arr) === Array.prototype // getPrototypeOf
 ```
 
-## Array上的属性和方法
+### Array上的属性和方法
 Todo...
 
-## 继承的实现方式
+## 九、继承的实现方式
 
 ### ES5继承
 
@@ -599,8 +602,25 @@ Array.prototype.__proto__ === Object.prototype // true
 
 上面的结果说明： **Function 和 Array 都继承自 Object，它们创建的实例都有 Object 原型方法**
 
-## 原型链的最初是什么状态？
+**原型链的最初是什么状态？**
 
 `null => Object => Array/Function`
 
 
+## 总结
+首先，我们通过实现一个 Person 类，了解到：
+- prototype 原型是如何在实例间共享方法的
+- Object.create(prototype) 的效果是创建一个对象，然后将其 `__proto__` 属性代理到 `prototype` 上，这样这个对象就可以调用 prototype 上的方法了
+- new 关键字可以简化我们的构造函数，比如 `new Object()` 它主要做了如下几件事：
+  1. 创建一个空对象 obj
+  2. 设置这个对象的 `__proto__` 为构造函数 `Object.prototype`
+  3. 执行这个构造函数，并以 obj 作为this上下文
+  4. 第三步返回的若是一个对象，则返回这个对象，否则返回 obj
+
+然后，我们分别对介绍了 `prototype` `Object.create(proto, propertiesObject)` `new` `class` 的使用
+
+接着，我们比较了几种创建对象的方式：`{}` `Object.create({})` `new Object()`
+
+再后来，对 Object 对象上的方法进行了详细的介绍，并分类列出了创建相关的、属性相关、原型相关的方法
+
+最后，我们使用 ES5 和 ES6 的语法分别实现继承，并引出原型链。
