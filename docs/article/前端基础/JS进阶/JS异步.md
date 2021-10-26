@@ -5,25 +5,76 @@
 - generator
 - async/await
 
-## call
+## callback
+高阶函数：接受函数作为参数的函数
+
+```js
+function sayHello(callback) {
+  console.log('Hello');
+  return callback()
+}
+sayHello(() => {
+  console.log('callback')
+})
+```
+
+比如下面的高阶函数例子：
+
+```js
+[1,2,3].map(el => el * el);
+[1,2,3].filter(el => el > 2);
+```
+
+高阶函数中的函数参数被执行，就是回调
+
+异步编程中回调是非常常见的编程范式
+
+但是会有回调地狱的问题，造成阅读困难
+
+我们可以通过将函数进行提取缓解，但依然很难阅读
+
+为了解决这个问题，JS引入 promise
 
 ## Promise
+promise 有三个状态 pending fulfilled rejected
 
-产生回调地狱的原因：
-1. 多层嵌套的问题；
-2. 每种任务的处理结果存在两种可能性（成功或失败），那么需要在每种任务执行结束后分别处理这两种可能性。
+默认状态是 pending
 
-Promise 通过回调函数延迟绑定、回调函数返回值穿透和错误“冒泡”技术解决了上面的两个问题。
+promise 内部可以通过 resolve() 修改状态为 fulfilled，或 reject() 修改状态为 rejected
 
-我们还分析了 Promise 之所以要使用微任务是由 Promise 回调函数延迟绑定技术导致的。
+修改状态为 fulfilled 会触发 promise.then()
+修改状态为 rejected 会触发 promise.catch()
 
-思考题：
-1. Promise 中为什么要引入微任务？
-2. Promise 中是如何实现回调函数返回值穿透的？
-3. Promise 出错后，是怎么通过“冒泡”传递给最后那个捕获异常的函数？
+因此我们可以把成功的回调处理函数传入 promise.then()，报错的回调处理函数放入 promise.catch()
 
-搞清楚了这三道题目，你也就搞清楚了 Promise。
+```js
+const p = new Promise((resolved, rejected) => {
+  resolved(1);
+})
+p.then((result) => {
+  console.log(result);
+})
 
+```
+
+promise 还支持链式调用，可以简化代码
+
+但是毕竟还是异步的思维，于是ES7引入了 Async/Await ，一步到位
+
+async 放在函数前，表示返回的是一个包裹了返回值的 promise，同时告诉JS引擎内部可能有异步函数调用
+await 一定要配合 async 才能使用，不然会报错
+
+有了 async/await 组合，我们可以使用同步的写法来处理异步调用了
+
+错误处理可以用 `try{} catch(){}`
+
+```js
+try {
+
+} catch(err) {
+
+}
+```
 ## generator
 
 ## async/await
