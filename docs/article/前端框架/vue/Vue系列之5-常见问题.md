@@ -276,6 +276,38 @@ Vue Router 是 Vue.js 官方的路由管理器。它和 Vue.js 的核心深度�
 
 - 4、MVVM作为数据绑定的入口，整合Observer、Compile和Watcher三者，通过Observer来监听自己的model数据变化，通过Compile来解析编译模板指令，最终利用Watcher搭起Observer和Compile之间的通信桥梁，达到数据变化 -> 视图更新；视图交互变化(input) -> 数据model变更的双向绑定效果。
 
+### Object.defineProperty vs Proxy
+Object.defineProperty 是 ES5 中一个无法 shim 的特性，这也就是 Vue 不支持 IE8 以及更低版本浏览器的原因。Avalon.js 为了兼容IE6，使用了 VBScript 来实现响应式。
+
+#### 1、Object.defineProperty
+> Object.defineProperty 本质上是对对象属性的劫持，vue1、vue2采用，支持IE9+
+
+**缺点1、无法检测对象属性的添加和移除**
+- 原因：Object.defineProperty api的限制，只能对已知的属性进行绑定，因此直接在对象上添加属性是无法监听到的，需要额外处理；而移除操作在这个api上也是无法知晓的，因此需要额外处理。
+- 解决方法：vue提供$set、$delete处理
+- 另外请注意 `this.someObject = Object.assign({}, this.someObject, { a: 1, b: 2 })` 和 `Object.assign(this.someObject, { a: 1, b: 2 })` 的区别）
+
+
+**缺点2、数组API方法监听不到（对数组api方法进行重写）**
+- 原因：Object.defineProperty 监听不到数组的变化
+- 解决方法：Vue2.0 对数组的**变更方法**进行了重写：[参考](https://segmentfault.com/a/1190000015075679)
+  * push()
+  * pop()
+  * shift()
+  * unshift()
+  * splice()
+  * sort()
+  * reverse()
+非变更方法比如 `filter()` `concat()` `slice` 每次都会返回一个新的数组，vue中的vdom会尽量复用，因此也不用担心性能问题
+
+**缺点3、需深度遍历对象中的对象属性（会有一些性能消耗）**
+- 原因：Object.defineProperty 是对对象属性的监听，因此需要遍历对象的属性，当嵌套较深时，会有一些性能消耗
+- 解决方法：Vue3 使用了 proxy 实现
+
+#### 2、Proxy（vue3.0采用，IE11+）
+- 相当于在对象外层加拦截
+- 缺点：
+  -  不兼容IE11，也没有 polyfill
 ### v-for key的作用
 > 当Vue用 v-for 正在更新已渲染过的元素列表是，它默认用“就地复用”策略。如果数据项的顺序被改变，Vue将不是移动DOM元素来匹配数据项的改变，而是简单复用此处每个元素，并且确保它在特定索引下显示已被渲染过的每个元素。
 为了给Vue一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一 key 属性。key属性的类型只能为 string或者number类型。
@@ -352,7 +384,6 @@ pc端：
     - 缺点：
       -  不兼容IE11，也没有 polyfill
 
-- 6、生命周期
 
 
 ## 总结
