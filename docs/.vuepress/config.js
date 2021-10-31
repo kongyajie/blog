@@ -40,6 +40,18 @@ module.exports = {
     sidebar: {
       '/article/': [
         {
+          title: 'JS进阶',
+          children: [
+            '/article/前端基础/JS进阶/JS原型原型链',
+            '/article/前端基础/JS进阶/JS执行机制',
+            '/article/前端基础/JS进阶/JS异步',
+            // '/article/前端基础/JS进阶/你真的掌握变量和类型了吗（一）数据类型',
+            // '/article/前端基础/JS进阶/你真的掌握变量和类型了吗（二）类型转换',
+            // '/article/前端基础/JS进阶/如何写出一个惊艳面试官的深拷贝',
+            // '/article/前端基础/JS进阶/浮点数精度问题'
+          ]
+        },
+        {
           title: '前端基础',
           children: [
             '/article/前端基础/JS/JavaScript系列介绍',
@@ -56,18 +68,6 @@ module.exports = {
             '/article/前端基础/浏览器/浏览器工作原理系列之5-如何与服务器通讯？',
             '/article/前端基础/浏览器/浏览器工作原理系列之6-如何保证浏览器安全？',
             '/article/前端基础/浏览器/浏览器工作原理系列之7-未来发展方向？',
-          ]
-        },
-        {
-          title: 'JS进阶',
-          children: [
-            '/article/前端基础/JS进阶/JS原型原型链',
-            '/article/前端基础/JS进阶/JS执行机制',
-            '/article/前端基础/JS进阶/JS异步',
-            '/article/前端基础/JS进阶/你真的掌握变量和类型了吗（一）数据类型',
-            '/article/前端基础/JS进阶/你真的掌握变量和类型了吗（二）类型转换',
-            '/article/前端基础/JS进阶/如何写出一个惊艳面试官的深拷贝',
-            '/article/前端基础/JS进阶/浮点数精度问题'
           ]
         },
         {
