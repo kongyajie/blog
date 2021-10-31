@@ -44,7 +44,8 @@ module.exports = {
           children: [
             '/article/前端基础/JS进阶/JS原型原型链',
             '/article/前端基础/JS进阶/JS执行机制',
-            '/article/前端基础/JS进阶/JS异步',
+            '/article/前端基础/JS进阶/JS异步编程',
+            '/article/前端基础/JS进阶/【译】一网打尽JavaScript的Number类型',
             // '/article/前端基础/JS进阶/你真的掌握变量和类型了吗（一）数据类型',
             // '/article/前端基础/JS进阶/你真的掌握变量和类型了吗（二）类型转换',
             // '/article/前端基础/JS进阶/如何写出一个惊艳面试官的深拷贝',
@@ -54,6 +55,7 @@ module.exports = {
         {
           title: '前端基础',
           children: [
+            '/article/前端基础/CSS/CSS-float的工作原理和流的破坏与保护',
             '/article/前端基础/JS/JavaScript系列介绍',
             '/article/前端基础/JS/JavaScript系列之1-概览',
             '/article/前端基础/JS/JavaScript系列之2-运行过程',
