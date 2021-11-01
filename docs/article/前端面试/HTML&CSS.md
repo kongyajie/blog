@@ -316,7 +316,7 @@ inline元素：line-height值等于height值
 - rem，基于根元素的相对单位（事实上，我们需要做的是等比例缩放，而rem正好拥有此特性，所以就用它了~）
    - 设置当前设备的clientWidth/10为root的font-size大小，设备逻辑宽度750，则 `font-size:75px` ;
    - 页面的其他部分，可以使用rem来作为单位，如文字、图片等。比如设计稿宽度是375，字体是14px，则这里的字体rem为 `((750/375) * 14px) / 75px`
-   - [1px像素问题](https://zhuanlan.zhihu.com/p/268419107)
+   - [1px像素问题](https://zhuanlan.zhihu.com/p/268419107)：也就是说，当逻辑像素是 1pt 时，在 DPR 为 2 的 设备上显示为 2px 的物理像素
 - @media-query，根据不同屏幕的宽度设置根元素的font-size
 
 ### rem 的弊端：

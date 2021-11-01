@@ -104,7 +104,7 @@
 不同点：
 - React 使用 JSX 拥抱 JS，Vue 使用模板拥抱 HTML
 - React 是函数式编程，Vue声明式编程
-- React 更多需要自力更生（如scu），Vue把想要的都给你（computed、watch），提供了众多语法糖
+- React 更多需要自力更生（如scu），Vue把想要的都给你（computed、watch），提供了众多语法糖，手动挡 vs 自动挡
 
 ## React的样式文件怎么管理？
 - Vue组件提供了 `.vue单文件组件` 的写法，可以在组件内定义和使用局部样式，那React组件内使用的样式如何组织呢？

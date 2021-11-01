@@ -305,7 +305,7 @@ console.log(bar.getName())
 
 全局执行上下文中的 this 指向 window对象
 
-**函数执行上下文中的 this**
+**函数执行上下文中的 this 要根据调用的方式来确定指向** 
 
 设置函数执行上下文的 this 值的几种方法：
 1. 通过函数的 call/apply/bind 方法设置
