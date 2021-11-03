@@ -45,6 +45,7 @@ module.exports = {
             '/article/前端基础/JS进阶/JS原型原型链',
             '/article/前端基础/JS进阶/JS执行机制',
             '/article/前端基础/JS进阶/JS异步编程',
+            '/article/前端基础/JS进阶/JS异常处理',
             '/article/前端基础/JS进阶/【译】一网打尽JavaScript的Number类型',
             // '/article/前端基础/JS进阶/你真的掌握变量和类型了吗（一）数据类型',
             // '/article/前端基础/JS进阶/你真的掌握变量和类型了吗（二）类型转换',
