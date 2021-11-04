@@ -229,8 +229,8 @@ for (let i of [1,2,3]) {
 
 ## 宏任务和微任务
 ### 什么是宏任务，什么是微任务？
-- 宏任务：SetTimeout、Ajax、I/O、事件
-- 微任务：Promise、Process
+- 宏任务：SetTimeout、Ajax、I/O、DOM事件
+- 微任务：Promise、Async/Await
 
 ### 为什么要加入微任务？
 宏任务的时间粒度比较大，执行的时间间隔是不能精确控制的，对一些高实时性的需求就不太符合了，比如监听 DOM 的变化。
