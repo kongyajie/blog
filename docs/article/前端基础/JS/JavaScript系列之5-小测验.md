@@ -43,6 +43,10 @@ console.log('script end')
 
 argument 是类数组结构有什么特点？
 
+
+【前50题中值得注意的题】：8、14、17、20、21、29、37、38、40、43、46、48、49
+
 ## 总体测验
 
 [测试题](https://juejin.cn/post/6844903782229213197)
+[javascript-questions](https://github.com/lydiahallie/javascript-questions/blob/master/zh-CN/README-zh_CN.md)
