@@ -47,7 +47,9 @@ module.exports = {
             '/article/前端基础/JS进阶/JS执行机制',
             '/article/前端基础/JS进阶/JS异步编程',
             '/article/前端基础/JS进阶/JS异常处理',
-            '/article/前端基础/JS进阶/【译】一网打尽JavaScript的Number类型',
+            '/article/前端基础/JS进阶/JS精选题集',
+            '/article/前端基础/JS编程/总览',
+            // '/article/前端基础/JS进阶/【译】一网打尽JavaScript的Number类型',
             // '/article/前端基础/JS进阶/你真的掌握变量和类型了吗（一）数据类型',
             // '/article/前端基础/JS进阶/你真的掌握变量和类型了吗（二）类型转换',
             // '/article/前端基础/JS进阶/如何写出一个惊艳面试官的深拷贝',
@@ -108,12 +110,6 @@ module.exports = {
           title: '数据结构与算法',
           children: [
             '/article/数据结构与算法/总览'
-          ]
-        },
-        {
-          title: 'JS编程',
-          children: [
-            '/article/JS编程/总览'
           ]
         },
         {
