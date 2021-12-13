@@ -220,11 +220,13 @@ vera.sleep();
 
 下面我们熟悉一下它们。
 
-## 二、prototype
+## 二、一些概念
+
+### prototype
 
 > prototype 是所有JS函数都有的一个属性，我们可以用它在实例间共享属性和方法
 
-## 三、Object.create
+### Object.create
 
 > 定义：Object.create()方法创建一个新对象，使用现有的对象来提供新创建的对象的__proto__ 
 > 语法：Object.create(proto，[propertiesObject])
@@ -338,7 +340,7 @@ obj // { b: 10 }
 
 同样的，这个例子中，由于 `obj.b` 调用的是 b 属性的 `访问器描述符` ，因此每次都会返回 `10` 。
 
-## 四、new
+### new
 
 > 定义：`new 运算符` 创建一个**用户定义的对象类型**的实例或**具有构造函数的内置对象**的实例。 - MDN
 > 语法：`new constructor[([arguments])]`
@@ -373,7 +375,7 @@ function Person(name, age) {
 var p = new Person('Aaron', 31)
 ```
 
-## 五、class
+### class
 
 > **class 声明**创建一个基于原型继承的具有给定名称的新类。
 
@@ -425,7 +427,7 @@ var Person = /*#__PURE__*/function () {
 ```
 
 
-## 六、创建对象的几种方式对比
+## 三、创建对象的几种方式对比
 * `{}`
 * `new Object()`
 * `Object.create()`
@@ -448,24 +450,7 @@ obj3 new 的内部做了下面几个操作：
 
 而 obj1 则是新建一个空对象，然后将这个对象的 `__proto__` 指向 `{a:1}` 这个对象，所以 `obj1` 本身并没有 `a` 属性，而是在原型链上可以访问到 `{a:1}` 上的 `a` 属性
 
-## 七、一些概念
-
-*`prototype` 是构造函数上的属性，用来在不同的实例间共享属性和方法
-
-*`__proto__` 是对象上的属性，指向这个对象的原型
-
-*`constructor` 是对象的构造函数，指向创建这个对象的构造函数
-
-*`instanceof` 是判断一个对象是否为这个构造函数的实例
-
-```js
-var obj = new Object()
-obj.__proto__ === Object.prototype // true
-obj.constructor === Object // true
-obj instanceof Object // true
-```
-
-## 八、Object对象上的属性和方法
+## 四、Object对象上的属性和方法
 
 ### 1、创建相关
 - `Object.create(proto，[propertiesObject])` 方法创建一个新对象，使用现有的对象来提供新创建的对象的__proto__
@@ -513,7 +498,7 @@ Object.getPrototypeOf(arr) === Array.prototype // getPrototypeOf
 ### Array上的属性和方法
 Todo...
 
-## 九、继承的实现方式
+## 五、继承的实现方式
 
 ### ES5继承
 
@@ -540,17 +525,17 @@ Animal.prototype.play = function()  {
 // let leo = new Animal('leo', 10)
 
 function Dog(name, energy, breed) {
-  Animal.call(this, name, energy) // 继承属性
+  Animal.call(this, name, energy) // 1、继承属性
   this.breed = breed;
 }
 
-Dog.prototype = Object.create(Animal.prototype) // 继承方法（但这里会引起 constructor 异常）
+Dog.prototype = Object.create(Animal.prototype) // 2、继承方法（但这里会引起 constructor 异常）
 
-Dog.prototype.bark = function() { // 在子类的原型上添加方法
+Dog.prototype.bark = function() { // 3、在子类的原型上添加方法
   this.energy -= .1
 }
 
-Dog.prototype.constructor = Dog // 修复 constructor 异常
+Dog.prototype.constructor = Dog // 4、修复 constructor 异常
 
 ```
 
@@ -592,6 +577,23 @@ class Dog extends Animal {
 可以看到 ES6 的实现精简了许多，也和其他面相对象编程语言如 Java 、C++的语法更接近了
 
 ### 原型链
+
+**一些概念**
+
+*`prototype` 是构造函数上的属性，用来在不同的实例间共享属性和方法
+
+*`__proto__` 是对象上的属性，指向这个对象的原型
+
+*`constructor` 是对象的构造函数，指向创建这个对象的构造函数
+
+*`instanceof` 是判断一个对象是否为这个构造函数的实例
+
+```js
+var obj = new Object()
+obj.__proto__ === Object.prototype // true
+obj.constructor === Object // true
+obj instanceof Object // true
+```
 
 **Function Array 和 Object是什么关系？**
 
