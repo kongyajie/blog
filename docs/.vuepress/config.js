@@ -42,6 +42,7 @@ module.exports = {
         {
           title: 'JS进阶',
           children: [
+            '/article/前端基础/JS进阶/JS进阶系列',
             '/article/前端基础/JS进阶/JS类型',
             '/article/前端基础/JS进阶/JS原型原型链',
             '/article/前端基础/JS进阶/JS执行机制',
@@ -60,12 +61,6 @@ module.exports = {
           title: '前端基础',
           children: [
             '/article/前端基础/CSS/CSS-float的工作原理和流的破坏与保护',
-            // '/article/前端基础/JS/JavaScript系列介绍',
-            // '/article/前端基础/JS/JavaScript系列之1-概览',
-            // '/article/前端基础/JS/JavaScript系列之2-运行过程',
-            // '/article/前端基础/JS/JavaScript系列之3-类型',
-            // '/article/前端基础/JS/JavaScript系列之4-原型与原型链',
-            // '/article/前端基础/JS/JavaScript系列之5-小测验',
             '/article/前端基础/浏览器/浏览器工作原理系列介绍',
             '/article/前端基础/浏览器/浏览器工作原理系列之1-发展历史',
             '/article/前端基础/浏览器/浏览器工作原理系列之2-页面循环系统',
