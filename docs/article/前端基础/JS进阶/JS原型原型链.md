@@ -1,3 +1,5 @@
+
+
 # JS原型和原型链
 
 在介绍原型之前，我们先来看一个例子
@@ -398,12 +400,11 @@ p.__proto__ === Person.prototype // true
 通过上面的案例，我们了解到原型可以帮助我们在不同的实例间共享属性和方法，实现的过程中，会涉及这么几个概念：
 
 * `prototype` 是构造函数上的属性，用来在不同的实例间共享属性和方法
-
 * `__proto__` 是对象上的属性，指向这个对象的原型
-
 * `constructor` 是对象的构造函数，指向创建这个对象的构造函数
-
 * `instanceof` 是判断一个对象是否为这个构造函数的实例
+
+他们之间的关系如下：
 
 ```js
 var obj = new Object()
@@ -412,9 +413,7 @@ obj.constructor === Object // true
 obj instanceof Object // true
 ```
 
-
-
-下面我们通过一个实例来展示它们之间的关系：
+下面我们看一个实例：
 
 ```js
 function Person(name, age) {
@@ -424,21 +423,34 @@ function Person(name, age) {
 Person.prototype.play = function() {
   console.log(`${this.name} play`)
 }
-let p1 = new Person('Aaron', 31)
-p1.play() // Aaron play
+let person = new Person('Aaron', 31)
+person.play() // Aaron play
 ```
+
+其中：
+
+- 构造函数 `Person`
+- 实例 `person`
+- 原型实例 `Person.prototype`
+- 实例的原型属性 `person.__proto__`
+- 原型实例的构造函数 `Person.prototype.constructor`
+- 原型的原型属性 `Person.prototype.__proto__`
+
+它们之间的关系如下图：
 
 ![](https://oss-1252175178.cos.ap-shanghai.myqcloud.com/JS%E5%8E%9F%E5%9E%8B%E9%93%BE.png)
 
-- 构造函数 `Person`
+下面我们用代码来表示：
 
-- 原型 `Person.prototype`
+```js
+person.__proto__ === Person.prototype // true
+Person.prototype.constructor === Person // true
+Person.prototype.__proto__ === Object.prototype // true
+Object.prototype.constructor === Object // true
+Object.prototype.__proto__ === null // true
+```
 
-- 原型的构造函数 `Person.prototype.constructor`
-
-- 实例的原型属性 `person.__proto__`
-
-- 原型的原型属性 `Person.prototype.__proto__`
+至此，我们就将整个原型链的关系展现出来了。
 
 ## 三、继承的实现方式
 
@@ -535,11 +547,11 @@ Array.prototype.__proto__ === Object.prototype // true
 ## 四、Object对象上的属性和方法
 
 ### 1、创建相关
-- `Object.create(proto，[propertiesObject])` 方法创建一个新对象，使用现有的对象来提供新创建的对象的__proto__
-- `Object.assign(target, ...sources)` 方法用于将所有可枚举属性的值从一个或多个源对象分配到目标对象。它将返回目标对象。
+- **`Object.create(proto，[propertiesObject])`** 方法创建一个新对象，使用现有的对象来提供新创建的对象的__proto__
+- **`Object.assign(target, ...sources)`** 方法用于将所有可枚举属性的值从一个或多个源对象分配到目标对象。它将返回目标对象。
 
 ### 2、属性相关
-- `Object.defineProperties(obj, props)` 方法直接在一个对象上定义新的属性或修改现有属性，并返回该对象。
+- **`Object.defineProperties(obj, props)`** 方法直接在一个对象上定义新的属性或修改现有属性，并返回该对象。
 - `Object.getOwnPropertyNames(obj)` 方法返回一个由指定对象的所有自身属性的属性名（**包括不可枚举属性但不包括Symbol值作为名称的属性**）组成的数组。
 - `Object.getOwnPropertyDescriptors(obj)` 方法用来获取一个对象的所有自身属性的描述符。
 - `Object.getOwnPropertySymbols(obj)` 方法返回一个给定对象自身的所有 Symbol 属性的数组。
@@ -553,8 +565,8 @@ Array.prototype.__proto__ === Object.prototype // true
 - `Object.freeze()` 方法可以冻结一个对象。一个被冻结的对象再也不能被修改；
 - `Object.isFrozen(obj)` 方法判断一个对象是否被冻结。
 
-- `Object.keys(obj)` 方法会返回一个由一个给定对象的自身可枚举属性组成的数组，数组中属性名的排列顺序和正常循环遍历该对象时返回的顺序一致 。
-- `obj.hasOwnProperty(prop)` 方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性（也就是，是否有指定的键）。
+- **`Object.keys(obj)`** 方法会返回一个由一个给定对象的自身可枚举属性组成的数组，数组中属性名的排列顺序和正常循环遍历该对象时返回的顺序一致 。
+- **`obj.hasOwnProperty(prop)`** 方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性（也就是，是否有指定的键）。
 
 - `Object.entries(obj)` 方法返回一个给定对象自身可枚举属性的键值对数组，其排列与使用 for...in 循环遍历该对象时返回的顺序一致（区别在于 for-in 循环还会枚举原型链中的属性）。
 - `Object.fromEntries(iterable) ` 方法把键值对列表转换为一个对象。
@@ -569,12 +581,12 @@ Array.prototype.__proto__ === Object.prototype // true
 
 ### 4、其他
 - `Object.is(value1, value2)` 方法判断两个值是否为同一个值。
-- `obj.toString()` 方法返回一个表示该对象的字符串。
-- `obj.valueOf()` 方法返回指定对象的原始值。
+- **`obj.toString()`** 方法返回一个表示该对象的字符串。
+- **`obj.valueOf()`** 方法返回指定对象的原始值。
 
 ```js
 let arr = [];
-Object.getPrototypeOf(arr) === Array.prototype // getPrototypeOf
+Object.getPrototypeOf(arr) === Array.prototype // true
 ```
 
 ## 五、JavaScript是如何设计对象的？
@@ -615,9 +627,9 @@ JavaScript是基于***原型编程范式***来实现面向对象的。原型编�
 - 基于原型和基于类都能够满足基本的复用和抽象需求，它们的区别在于：基于原型强调行为，基于类则强调分类。猫->老虎（大猫），猫->老虎（猫科动物）
 
 ### 2、原型系统
-抛开Java类的复杂语法设施(new、Function Object、函数的prototype属性等),其实原型系统相当简单:
-- 对象的原型上都有私有字段`[[prototype]]`
-- 对象上读取一个属性，如果当前对象本身没有，则会继续访问对象的原型，直到找到或原型为空为止
+抛开Java类的复杂语法设施(new、Function Object、函数的prototype属性等)，**其实原型系统相当简单**:
+- **对象的原型上都有私有字段`[[prototype]]`**
+- **对象上读取一个属性，如果当前对象本身没有，则会继续访问对象的原型，直到找到或原型为空为止**
 
 早前，程序员只能通过Java风格的类接口来操纵原型运行时，ES6则提供内置函数来操纵原型：
 - `Object.create` 根据指定的原型创建新对象，原型可以是null
@@ -654,5 +666,6 @@ JavaScript是基于***原型编程范式***来实现面向对象的。原型编�
 
 最后，我们使用 ES5 和 ES6 的语法分别实现继承，并引出原型链。
 
+**练习1：分别用ES5/ES6实现类、ES5/ES6实现继承、并用代码模拟原型链的查找过程**
 
-
+**练习2：手写new、手写instanceof**
