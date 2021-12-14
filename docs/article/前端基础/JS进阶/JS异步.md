@@ -1,9 +1,13 @@
 # JS异步
 
-为什么需要异步？
-异步的实现机制？EventLoop？
-宏任务和微任务？
-异步的演化
+## 前言
+
+本文分为以下几个部分：
+
+- 为什么需要异步？
+- 异步的实现机制？EventLoop？
+- 宏任务和微任务？
+- 异步的演化
 
 ## 一、异步基础
 ### 为什么需要异步
@@ -17,7 +21,7 @@ JS设计为单线程，同步会阻塞代码的执行，异步不会阻塞代码
 问题：回调地狱
 promise的好处：窜行的方式代替回调嵌套
 
-## 二、异步进阶
+## 二、异步编程的演化
 
 - callback
 - promise
@@ -44,22 +48,16 @@ sayHello(() => {
 [1,2,3].filter(el => el > 2);
 ```
 
-高阶函数中的函数参数被执行，就是回调
+高阶函数中的函数参数被执行，就是回调，异步编程中回调是非常常见的编程范式。
 
-异步编程中回调是非常常见的编程范式
+但是会有回调地狱的问题，造成阅读困难，我们可以通过将函数进行提取缓解，但依然很难阅读。
 
-但是会有回调地狱的问题，造成阅读困难
-
-我们可以通过将函数进行提取缓解，但依然很难阅读
-
-为了解决这个问题，JS引入 promise
+为了解决这个问题，JS引入了 **promise**
 
 ### Promise
-promise 有三个状态 pending fulfilled rejected
+promise 有三个状态：`pending` `fulfilled` `rejected` ，默认状态是 `pending`
 
-默认状态是 pending
-
-promise 内部可以通过 resolve() 修改状态为 fulfilled，或 reject() 修改状态为 rejected
+promise 内部可以通过 `resolve()` 修改状态为` fulfilled`，或` reject()` 修改状态为 `rejected`
 
 修改状态为 fulfilled 会触发 promise.then()
 修改状态为 rejected 会触发 promise.catch()
@@ -95,74 +93,8 @@ try {
 }
 ```
 
+### async/await
 
-## 问答题：
-### EventLoop的机制
-> EventLoop 是 JS异步回调的实现机制
-
-eventloop 执行过程：
-1. 首先执行同步代码
-2. 遇到异步调用，如setTimeout或ajax请求等web api时，则交由浏览器的其他进程或线程处理，继续执行同步代码
-3. 异步调用处理完毕后，会将回调加入到回调队列中，等到同步代码执行完毕，会依次从回调队列取出并加入到执行栈中执行
-
-### 什么是宏任务和微任务，有什么区别？
-
-### Promise 有哪三种状态？如何变化？
-#### 三种状态：
-- pending resolved rejected
-- pending -> resolved 或 pending -> rejected
-- 变化不可逆
-
-#### 状态的表现
-- resolved 会触发 then 回调函数
-- rejected 会触发 catch 回调函数
-
-#### then和catch状态改变规则（重要）
-- `Promise.then` 正常返回 `resolved` ，里面有报错则返回 `rejected`
-- `Promise.catch` 正常返回 `resolved` ，里面有报错则返回 `rejected`
-
-
-#### 几个题目
-第一题：
-
-```js
-Promise.resolve().then(() => {
-    console.log(1)
-}).catch(() => {
-    console.log(2)
-}).then(() => {
-    console.log(3)
-})
-
-```
-
-第二题：
-
-```js
-Promise.resolve().then(() => {
-    console.log(1)
-    throw new Error('error1')
-}).catch(() => {
-    console.log(2)
-}).then(() => {
-    console.log(3)
-})
-```
-
-第三题：
-
-```js
-Promise.resolve().then(() => {
-    console.log(1);
-    throw new Error('err')
-}).catch(() => {
-    console.log(2)
-}).catch(() => {
-    console.log(3)
-})
-```
-
-## async/await
 同步语法，彻底消灭回调函数
 
 ### 1、async/await 使用
@@ -227,7 +159,7 @@ for (let i of [1,2,3]) {
 }
 ```
 
-## 宏任务和微任务
+## 三、宏任务和微任务
 ### 什么是宏任务，什么是微任务？
 - 宏任务：SetTimeout、Ajax、I/O、DOM事件
 - 微任务：Promise、Async/Await
@@ -240,16 +172,16 @@ for (let i of [1,2,3]) {
 2. Mutation Event
 3. Mutation Observer（采用微任务机制，有效地权衡了实时性和执行效率的问题）
 
-### eventloop 和 DOM渲染
+### Eventloop 和 DOM渲染
 eventloop过程：
-1. callstack空闲
-2. 检查当前宏任务的微任务队列，并依次执行
+1. 执行当前同步代码，
+2. callstack空闲，检查当前宏任务的微任务队列，并依次执行
 3. 尝试DOM渲染
-5. 触发EventLoop，从消息队列中获取宏任务并执行
+4. 触发EventLoop，从消息队列中获取宏任务并执行
 
 ### 宏任务和微任务的区别
-- 本质：微任务是ES6语法规定的；宏任务是由浏览器规定的
-- 在EventLoop中的位置：微任务在DOM渲染前触发；宏任务在DOM渲染后触发
+- **本质：宏任务是由浏览器规定的、微任务是ES6语法规定的**
+- **在EventLoop中的位置：微任务在DOM渲染前触发；宏任务在DOM渲染后触发**
 - 实现原理：微任务会被放入当前**执行栈的微任务队列**中，执行时机是在主函数执行结束之后、当前宏任务结束之前执行回调函数；宏任务是把异步回调函数封装成一个宏任务，添加到消息队列尾部，当循环系统执行到该任务的时候执行回调函数
 
 ### setTimeout的实现原理
@@ -263,6 +195,80 @@ eventloop过程：
 2. 网络进程发送网络请求到服务器
 3. 网络进程收到服务器返回的消息，将消息体封装起来加入到消息队列中
 4. 等当前执行栈空时，从消息队列中取出并执行
+
+## 问答题：
+
+### EventLoop的机制
+
+> EventLoop 是 JS异步回调的实现机制
+
+eventloop 执行过程：
+
+1. 首先执行同步代码
+2. 遇到异步调用，如setTimeout或ajax请求等web api时，则交由浏览器的其他进程或线程处理，继续执行同步代码
+3. 异步调用处理完毕后，会将回调加入到回调队列中，等到同步代码执行完毕，会依次从回调队列取出并加入到执行栈中执行
+
+### Promise 有哪三种状态？如何变化？
+
+#### 三种状态：
+
+- pending resolved rejected
+- pending -> resolved 或 pending -> rejected
+- 变化不可逆
+
+#### 状态的表现
+
+- resolved 会触发 then 回调函数
+- rejected 会触发 catch 回调函数
+
+#### then和catch状态改变规则（重要）
+
+- `Promise.then` 正常返回 `resolved` ，里面有报错则返回 `rejected`
+- `Promise.catch` 正常返回 `resolved` ，里面有报错则返回 `rejected`
+
+
+#### 几个题目
+
+第一题：
+
+```js
+Promise.resolve().then(() => {
+    console.log(1)
+}).catch(() => {
+    console.log(2)
+}).then(() => {
+    console.log(3)
+})
+
+```
+
+第二题：
+
+```js
+Promise.resolve().then(() => {
+    console.log(1)
+    throw new Error('error1')
+}).catch(() => {
+    console.log(2)
+}).then(() => {
+    console.log(3)
+})
+```
+
+第三题：
+
+```js
+Promise.resolve().then(() => {
+    console.log(1);
+    throw new Error('err')
+}).catch(() => {
+    console.log(2)
+}).catch(() => {
+    console.log(3)
+})
+```
+
+## 
 
 ## 场景题
 ### 场景题：promise then和catch的连接

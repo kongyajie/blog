@@ -73,7 +73,7 @@ xhr.send(); // 发起函数
 #### JS引擎
 通常讲到浏览器的时候，我们会说到两个引擎：渲染引擎和JS引擎。渲染引擎就是如何渲染页面，Chrome／Safari／Opera用的是Webkit引擎，IE用的是Trident引擎，FireFox用的是Gecko引擎。不同的引擎对同一个样式的实现不一致，就导致了经常被人诟病的浏览器样式兼容性问题。这里我们不做具体讨论。
 
-JS引擎可以说是JS虚拟机，负责JS代码的解析和执行。通常包括以下几个步骤：
+**JS引擎可以说是JS虚拟机，负责JS代码的解析和执行**。通常包括以下几个步骤：
 
 * 词法分析：将源代码分解为有意义的分词
 * 语法分析：用语法分析器将分词解析成语法树
@@ -170,7 +170,7 @@ click begin
 finished waiting
 ```
 
-然后，在JS引擎线程执行的时候，'timer a'对应的定时器产生的回调、 'timer b'对应的定时器产生的回调和两次 click 对应的回调被先后放入消息队列。由于JS引擎线程空闲后，会先查看是否有事件可执行，接着再处理其他异步任务。因此会产生 下面的输出顺序。
+然后，在JS引擎线程执行的时候，'timer a'对应的定时器产生的回调、 'timer b'对应的定时器产生的回调和两次 click 对应的回调被先后放入消息队列。**由于JS引擎线程空闲后，会先查看是否有事件可执行，接着再处理其他异步任务**。因此会产生 下面的输出顺序。
 。
 
 ```
@@ -196,7 +196,7 @@ callback -> promise -> generator + co -> async+await(语法糖)
 
 下面会一步一步展现各种方式。
 
-#### 3.1 回调函数
+#### 3.1 callback回调函数
 
 这是异步编程最基本的用法。
 
@@ -217,7 +217,16 @@ asyncPrint('Hello World', 1000);
 
 Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。它由社区最早提出和实现，ES6 将其写进了语言标准，统一了用法，原生提供了Promise对象。
 
-Promise 到底是什么。当我们通过new Promise创建 Promise 的时候，你实际创建的只是一个简单的 JavaScript 对象，这个对象可以调用两个方法then和catch。这是关键所在，当 Promise 的状态变为fulfilled的时候，传递给.then的函数将会被调用。如果 Promise 的状态变为rejected，传递给.catch的函数将会被调用。这就意味着，在你创建 Promise 的时候，要通过.then将你希望异步请求成功时调用的函数传递进来，通过.catch将你希望异步请求失败时调用的函数传递进来。
+Promise 到底是什么？
+
+当我们通过new Promise创建 Promise 的时候，你实际创建的只是一个简单的 JavaScript 对象，这个对象可以调用两个方法then和catch。
+
+这是关键所在：
+
+- 当 Promise 的状态变为fulfilled的时候，传递给.then的函数将会被调用。
+- 如果 Promise 的状态变为rejected，传递给.catch的函数将会被调用。
+
+这就意味着，在你创建 Promise 的时候，要通过.then将你希望异步请求成功时调用的函数传递进来，通过.catch将你希望异步请求失败时调用的函数传递进来。
 
 ```javascript
 const promise = new Promise(function(resolve, reject) {
@@ -231,7 +240,7 @@ const promise = new Promise(function(resolve, reject) {
 });
 ```
 
-比如，上面的例子,可以写成：
+比如，上面的例子可以写成：
 
 ```javascript
 function asyncPrint(value, ms) {
