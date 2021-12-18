@@ -47,6 +47,7 @@ module.exports = {
             '/article/前端基础/JS进阶/JS原型原型链',
             '/article/前端基础/JS进阶/JS执行机制',
             '/article/前端基础/JS进阶/JS异步编程',
+            '/article/前端基础/JS进阶/JS异步进阶',
             '/article/前端基础/JS进阶/JS异常处理',
             '/article/前端基础/JS进阶/JS精选题集',
             '/article/前端基础/JS编程/总览',

@@ -1,4 +1,4 @@
-# JS异步
+# JS异步进阶
 
 ## 前言
 
@@ -226,8 +226,8 @@ eventloop 执行过程：
 - `Promise.then` 正常返回 `resolved` ，里面有报错则返回 `rejected`
 - `Promise.catch` 正常返回 `resolved` ，里面有报错则返回 `rejected`
 
-
-#### 几个题目
+## 场景题
+### 场景题1：promise then和catch的连接
 
 第一题：
 
@@ -268,10 +268,72 @@ Promise.resolve().then(() => {
 })
 ```
 
-## 
+### 场景题2：async/await语法
 
-## 场景题
-### 场景题：promise then和catch的连接
-### 场景题：async/await语法
-### 场景题：promise 和 setTimeout 的顺序
-### 场景题：外加async/await的顺序问题
+```js
+async function fn() {
+  return 100
+}
+(async function() {
+  const a = fn()
+  const b = await fn()
+})
+```
+
+
+
+```js
+(async function() {
+  console.log('start')
+  const a = await 100
+  console.log('a', a)
+  const b = await Promise.resolve(200)
+  console.log('b', b)
+  const c = await Promise.reject(300)
+  console.log('c', c)
+  console.log('end')
+})()
+```
+
+
+
+### 场景题3：promise 和 setTimeout 的顺序
+
+```js
+console.log(100)
+setTimeout(() => {
+  console.log(200)
+})
+Promise.resolve().then(() => {
+  console.log(300)
+})
+console.log(400)
+```
+
+
+
+### 场景题4：外加async/await的顺序问题
+
+```js
+async function async1() {
+  console.log('async1 start');
+  await async2();
+  console.log('async1 end');
+}
+
+async function async2() {
+  console.log('async2');
+}
+
+console.log('script start');
+async1();
+console.log('script end');
+```
+
+
+
+### 手写Promise
+
+- 初始化 & 异步调用
+- then catch 链式调用
+- API .resolve .reject .all .race
