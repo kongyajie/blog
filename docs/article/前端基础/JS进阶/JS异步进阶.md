@@ -330,10 +330,188 @@ async1();
 console.log('script end');
 ```
 
+### 图片请求
 
+[codepen](https://codepen.io/RealAaron/pen/BadJodP?editors=1011)
+
+### Ajax请求封装
+TODO...
+### 模拟红绿灯
+
+[codepen](https://codepen.io/RealAaron/pen/abyEBqx)
 
 ### 手写Promise
 
 - 初始化 & 异步调用
 - then catch 链式调用
 - API .resolve .reject .all .race
+
+```js
+/**
+ * @description MyPromise
+ * @author Aaron
+ */
+class MyPromise {
+  state = 'pending' // 状态 pending fulfilled rejected
+  value = undefined // 成功后的值
+  reason = undefined // 失败后的愿意
+
+  resolveCallbacks = [];
+  rejectCallbacks = [];
+
+  constructor(fn) {
+    const resolveHandler = (value) => {
+      if (this.state === 'pending') {
+        this.state = 'fulfilled';
+        this.value = value;
+        this.resolveCallbacks.forEach(fn => fn(value));
+      }
+      
+    }
+
+    const rejectHandler = (reason) => {
+      if (this.state === 'pending') {
+        this.state = 'rejected';
+        this.reason = reason;
+        this.rejectCallbacks.forEach(fn => fn(reason));
+      }
+    }
+    try {
+      fn(resolveHandler, rejectHandler);
+    } catch(err) {
+      rejectHandler(err);
+    }
+    
+  }
+
+  then(fn1, fn2) {
+    // 当pending状态时，fn1和fn2会保存在callbacks中
+    fn1 = typeof fn1 === 'function' ? fn1 : (v) => v;
+    fn2 = typeof fn2 === 'function' ? fn2 : (v) => v;
+
+    if (this.state === 'pending') {
+      const p1 = new MyPromise((resolve, reject) => {
+        this.resolveCallbacks.push(() => {
+          try {
+            const newValue = fn1(this.value);
+            resolve(newValue);
+          } catch (err) {
+            reject(err)
+          }
+        });
+        this.rejectCallbacks.push(() => {
+          try {
+            const newReason = fn2(this.reason);
+            resolve(newReason);
+          } catch (err) {
+            reject(err)
+          }
+        });
+      })
+      return p1;
+    } else if (this.state === 'fulfilled') {
+      const p1 = new MyPromise((resolve, reject) => {
+        try {
+          const newValue = fn1(this.value);
+          resolve(newValue)
+        } catch(err) {
+          reject(err)
+        }
+      })
+      return p1;
+    } else if (this.state === 'rejected') {
+      const p1 = new MyPromise((resolve, reject) => {
+        try {
+          const newReason = fn2(this.reason);
+          reject(newReason);
+        } catch (err) {
+          reject(err)
+        }
+      })
+      return p1;
+    }
+  } 
+
+  // 就是 then 的一个语法糖，简单模式
+  catch(fn) {
+    return this.then(null, fn)
+  }
+
+}
+
+
+MyPromise.resolve = (value) => {
+  return new MyPromise((resolve, reject) => resolve(value));
+}
+
+MyPromise.reject = (reason) => {
+  return new MyPromise((resolve, reject) => reject(reason));
+}
+
+MyPromise.all = (promiseList = []) => {
+  const p1 = new MyPromise((resolve, reject) => {
+    const result = []; // 存储所有的返回结果
+    const length = promiseList.length;
+    let resolveCount = 0;
+
+    promiseList.forEach(p => {
+      p.then(data => {
+        result.push(data);
+        resolveCount ++;
+        
+        if (resolveCount == length) {
+          resolve(result);
+        }
+      }).catch (err => {
+        reject(err)
+      })
+    })
+  })
+  return p1;
+}
+
+MyPromise.race = (promiseList = []) => {
+  let resolved = false; // 标记
+  const p1 = new MyPromise((resolve, reject) => {
+    promiseList.forEach(p => {
+      p.then(data => {
+        if (!resolved) {
+          resolve(data);
+          resolve = true;
+        }
+      }).catch (err => {
+        reject(err);
+      });
+    })
+  })
+  return p1;
+}
+
+
+const p1 = new MyPromise((resolve, reject) => {
+  // resolve(100)
+  // reject('错误信息...');
+  setTimeout(() => {
+    resolve(100)
+  }, 500)
+})
+
+const p11 = p1.then(data1 => {
+  console.log('data1 ', data1);
+  return data1 + 1;
+})
+
+const p12 = p11.then(data2 => {
+  console.log('data2 ', data2);
+  return data2 + 2;
+})
+
+const p13 = p12.catch(err => console.error(err));
+
+const p2 = MyPromise.resolve(200)
+const p3 = MyPromise.reject('错误信息...')
+const p4 = MyPromise.all([p1,p2]) // 传入 promise 数组，等待所有都 fulfilled 之后，返回新 Promise，包含前面所有的结果
+const p5 = MyPromise.race([p1,p2]) // 传入 promise 数组，只要有一个 fulfilled ，即可返回
+```
+
+[codepen](https://codepen.io/RealAaron/pen/MWvrdEQ?editors=0012)
