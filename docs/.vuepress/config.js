@@ -43,6 +43,7 @@ module.exports = {
           title: 'JS进阶',
           children: [
             '/article/前端基础/JS进阶/JS进阶系列',
+            '/article/前端基础/JS进阶/JS概览',
             '/article/前端基础/JS进阶/JS类型',
             '/article/前端基础/JS进阶/JS原型原型链',
             '/article/前端基础/JS进阶/JS执行机制',
