@@ -72,7 +72,7 @@ MVVM包含3部分：
       <h1>{{ message }}</h1>
       <button @click="reverse">reverse</button>
     </div>
-</template
+</template>
 ```
 
 ```js
@@ -226,7 +226,9 @@ let reactiveObj = new Proxy(obj, {
 ![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/286a4362483c4cafb3fb8615cefe94bc~tplv-k3u1fbpfcp-watermark.image)
     
 ### 树diff的时间复杂度O(n^3)
-- 1、遍历tree1，2、遍历tree2，3、排序
+- 1、遍历tree1
+- 2、遍历tree2
+- 3、排序
 - 1000个节点，要计算1亿次，算法不可用
 
 ### 优化时间复杂度到O(n)
@@ -253,6 +255,9 @@ let reactiveObj = new Proxy(obj, {
 - 第三步：循环结束后，根据新老节点的数目不同做相应的添加或者删除节点操作
 
 各场景图示（这里看动画 👉  [diff算法图解动画](https://www.bilibili.com/video/BV1b5411V7i3?from=search&seid=4125072074822008044)）
+- k -> key
+- a/b/c/d -> 元素内容
+- 所有元素的tag都相同，可以理解均为 `<li>`
 
 ![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d0d8dca6afe24cd795af2edc2be7e049~tplv-k3u1fbpfcp-watermark.image)
 

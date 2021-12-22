@@ -188,36 +188,36 @@ render() {
 
 ```jsx
 add() {
-    this.setState({
-      count: this.state.count + 2
-    })
-  }
-  // reset() {
-  //   this.setState({
-  //     count: 0
-  //   })
-  // }
-  reset = () => {
-    this.setState({
-      count: 0
-    })
-  }
-  render() {
-    return (
-      <div>
-        {/* 事件处理 */}
+  this.setState({
+    count: this.state.count + 2
+  })
+}
+// reset() {
+//   this.setState({
+//     count: 0
+//   })
+// }
+reset = () => {
+  this.setState({
+    count: 0
+  })
+}
+render() {
+  return (
+    <div>
+      {/* 事件处理 */}
 
-        <button onClick={this.add.bind(this)}>Add</button>
+      <button onClick={this.add.bind(this)}>Add</button>
 
-        {/* <button onClick={() => {this.reset()}}>Reset</button> */}
+      {/* <button onClick={() => {this.reset()}}>Reset</button> */}
 
-        <button onClick={this.reset}>Reset</button>
+      <button onClick={this.reset}>Reset</button>
 
-        <div>{this.state.count}</div>
+      <div>{this.state.count}</div>
 
-      </div>
-    )
-  }
+    </div>
+  )
+}
 ```
 
 ### 5、表单（受控组件）
@@ -338,7 +338,18 @@ class Welcome extends React.Component {
 ```
 
 生命周期
+- 初始化阶段（初始化state和props）
+- 挂载阶段（componentWillMount -> render -> componentDidMount）
+- 更新阶段（shouldComponentUpdate -> componentWillUpdate -> render -> componentDidUpdate）
+- 卸载阶段（componentWillUnmount）
 
+[React 生命周期详解](https://segmentfault.com/a/1190000021827650)
+
+React Fiber（React16）
+- 实际上是对React核心算法（调和过程）的重写
+- 背景：React15中渲染分为两个阶段，协调阶段和渲染阶段。协调阶段执行diff算法，纯JS计算；渲染器负责渲染DOM。问题是协调器是递归处理虚拟DOM的，又由于JS是单线程，性能较差。因此Fiber添加了调度器来优化协调过程，使用了 requestIdleCallback 机制进行任务拆分，提高了性能。
+
+[浅谈对 React Fiber 的理解](https://segmentfault.com/a/1190000039189408)
 ## 四、高级特性
 ### 1、函数组件
 纯函数组件 vs class组件

@@ -130,6 +130,7 @@ this.$refs.domName
 ### $nextTick是什么
 > nextTick 是在下次 DOM 更新循环结束之后执行延迟回调，在修改数据之后使用nextTick，则可以在回调中获取更新后的 DOM
 
+[Vue的nextTick具体是微任务还是宏任务?](https://juejin.cn/post/6875492931726376974)
 ### v-model的原理&自定义v-model
 v-model的原理：
 1. 绑定 `value` 属性
@@ -309,9 +310,7 @@ Object.defineProperty 是 ES5 中一个无法 shim 的特性，这也就是 Vue 
 - 缺点：
   -  不兼容IE11，也没有 polyfill
 ### v-for key的作用
-> 当Vue用 v-for 正在更新已渲染过的元素列表是，它默认用“就地复用”策略。如果数据项的顺序被改变，Vue将不是移动DOM元素来匹配数据项的改变，而是简单复用此处每个元素，并且确保它在特定索引下显示已被渲染过的每个元素。
-为了给Vue一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一 key 属性。key属性的类型只能为 string或者number类型。
-key 的特殊属性主要用在Vue的虚拟DOM算法，在新旧nodes对比时辨识VNodes。如果不使用 key，Vue会使用一种最大限度减少动态元素并且尽可能的尝试修复/再利用相同类型元素的算法。使用key，它会基于key的变化重新排列元素顺序，并且会移除 key 不存在的元素。
+> 在diff算法中的 updateChildren 时，尽可能的复用key相同的节点，尽量使用移动而不是更新dom的操作
 
 ### vue.js的template编译过程
 > **简而言之，就是先转化成AST树，再得到的render函数返回VNode（Vue的虚拟DOM节点）**，详细步骤如下：
