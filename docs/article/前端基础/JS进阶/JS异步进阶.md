@@ -454,9 +454,9 @@ MyPromise.all = (promiseList = []) => {
     const length = promiseList.length;
     let resolveCount = 0;
 
-    promiseList.forEach(p => {
+    promiseList.forEach((p,index) => {
       p.then(data => {
-        result.push(data);
+        result[index] = data; // 注意：这里promise resolve的结果需对应到result索引中
         resolveCount ++;
         
         if (resolveCount == length) {
