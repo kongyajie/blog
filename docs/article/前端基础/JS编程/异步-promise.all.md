@@ -1,11 +1,15 @@
 # 异步-promise.all
 
 ## 一、Promise概念
-Promise是JS异步编程中的重要概念，异步抽象处理对象，是目前比较流行Javascript异步编程解决方案之一。Promise.all()接受一个由promise任务组成的数组，可以同时处理多个promise任务，当所有的任务都执行完成时，Promise.all()返回resolve，但当有一个失败(reject)，则返回失败的信息，即使其他promise执行成功，也会返回失败。和后台的事务类似。和rxjs中的forkJoin方法类似，合并多个 Observable 对象 ，等到所有的 Observable 都完成后，才一次性返回值。
+Promise是JS异步编程中的重要概念，异步抽象处理对象，是目前比较流行Javascript异步编程解决方案之一。
+
+Promise.all()接受一个由promise任务组成的数组，可以同时处理多个promise任务，当所有的任务都执行完成时，Promise.all()返回resolve，但当有一个失败(reject)，则返回失败的信息，即使其他promise执行成功，也会返回失败。
+
+和后台的事务类似。和rxjs中的forkJoin方法类似，合并多个 Observable 对象 ，等到所有的 Observable 都完成后，才一次性返回值。
 
 ## 二、Promise.all 如何使用
 
-对于 Promise.all(arr) 来说，在参数数组中所有元素都变为决定态后，然后才返回新的 promise。
+对于 Promise.all(arr) 来说，在参数数组中所有元素都变为决定态后，然后才返git回新的 promise。
 
 ```js
 var p1 = Promise.resolve(1),
@@ -46,9 +50,9 @@ Promise.all = function(promiseList) {
     for (let i = 0; i < promiseList.length; i++) {
       let p = promiseList[i];
       p.then(res => {
-        result[i] = res; // 按索引号接受结果，防止顺序错乱
+        result[i] = res; // 按索引号接收结果，防止顺序错乱
         resolvedCount++;
-        if (resolvedCount === promiseList.length) {
+        if (resolvedCount === promiseList.length) { // 全部 promise 完成时，resolve并返回结果
           resolve(result);
         }
       }, (err) => {
