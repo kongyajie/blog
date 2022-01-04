@@ -1,5 +1,11 @@
 # JS精选题集
 
+## JS设计缺陷
+- undefined 未定义成关键字（使用 void 0 替代）
+- typeof 判断 null 和 Object 都是 Object（使用其他类型判断方式，如 `Object.prototype.toString` ）
+- var变量提升导致变量覆盖和变量污染（ES6引入块级作用域）
+- this 不能继承外层函数的 this 值（使用箭头函数或定义self）
+
 ## 一、基础语法相关
 ### 运算符
 - 63 自加操作
