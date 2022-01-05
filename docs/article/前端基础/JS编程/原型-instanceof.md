@@ -7,12 +7,11 @@ const myInstanceof = (instance, ctor) => {
   // 基本数据类型都返回false
   if (typeof instance !== 'object' || instance === null) return false;
 
-  let proto = Object.getPrototypeOf(instance);
-  while (true) {
-    if (proto === null) return false;
-    if (proto === ctor.prototype) return true;
-    proto = Object.getPrototypeOf(proto);
+  while(instance) {
+      if (instance.__proto__ === ctor.prototype) return true;
+      instance = instance.__proto__;
   }
+  return false;
 }
 
 class Person {
