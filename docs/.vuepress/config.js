@@ -89,6 +89,7 @@ module.exports = {
             '/article/前端框架/react/React系列之5-常见问题',
             '/article/前端框架/react/React系列之6-hooks',
             '/article/前端框架/webpack/webpack',
+            '/article/前端框架/webpack/webpack分享'
           ]
         },
         {
