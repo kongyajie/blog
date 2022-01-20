@@ -263,7 +263,7 @@ obj.constructor === Object // true
 * 执行 `obj.a` 时，首先会在 `obj` 对象本身查找，发现没有找到，因此会向 `obj.__proto__` 上查找，发现有这个属性，因此返回 1 
 * `obj.constructor` 指向的是创建 `obj` 的构造函数，而在 `Object.create` 内部，创建 `obj` 时构造函数即为 `Object`
 
-**下面我们模拟实现一个 `Object.create()` **：
+下面我们模拟实现一个 `Object.create()`：
 
 ```js
 Object.myCreate = function(proto) {
@@ -617,7 +617,7 @@ Object.getPrototypeOf(arr) === Array.prototype // true
 ## 六、JavaScript是如何实现面向对象的？
 > JavaScript是基于原型的面向对象语言
 
-JavaScript是基于***原型编程范式***来实现面向对象的。原型编程范式的核心思想就是***利用实例来描述对象，用实例作为定义对象和继承的基础***。
+JavaScript是基于 **原型编程范式** 来实现面向对象的。原型编程范式的核心思想就是**利用实例来描述对象，用实例作为定义对象和继承的基础**。
 
 在 JavaScript 中，原型编程范式的体现就是基于原型链的继承。这其中，对原型、原型链的理解是关键。
 

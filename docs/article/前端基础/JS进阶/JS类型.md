@@ -98,7 +98,7 @@ console.log(obj.name); // AaronKong
 
 * **typeof** 判断基本类型和函数对象很方便，但无法区分 null 和 object（包括数组）。
 * **instanceof** 运算符用于检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上，只能检测对象的类型。
-* **Object.prototype.toString** 可以准确返回当前对象的 Class 属性，因为JS中么有任何方法可以更改私有的 Class 属性
+* **Object.prototype.toString** 可以准确返回当前对象的 Class 属性，因为JS中没有任何方法可以更改私有的 Class 属性
 * **constructor** 通过对象的该属性可判断其类型（有被修改的风险）
 
 typeof示例：
@@ -125,13 +125,7 @@ var obj = {a:1}
 obj instanceof Object // true
 ```
 
-小疑问：如何实现一个 `instanceof` ？
-
-```js
-function myInstanceOf(instance1, instance2) {
-
-}
-```
+> 小疑问：如何实现一个 `instanceof` ？
 
 `Object.prototype.toString` 示例：
 
