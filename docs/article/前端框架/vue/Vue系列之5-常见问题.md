@@ -319,6 +319,15 @@ Object.defineProperty 是 ES5 中一个无法 shim 的特性，这也就是 Vue 
 >
 > 然后，AST会经过generate（将AST语法树转化成render funtion字符串的过程）得到render函数，render的返回值是VNode，VNode是Vue的虚拟DOM节点，里面有（标签名、子节点、文本等等）
 
+### React Fiber 能否用于 Vue？
+
+最早Vue3的提案其实是包含时间切片方案的，最后废弃的主要原因，是时间切片解决的的问题，Vue3基本碰不到
+1. Vue3把虚拟Dom控制在组件级别，组件之间使用响应式，这就让Vue3的虚拟Dom不会过于庞大
+2. Vue3虚拟Dom的静态标记和自动缓存功能，让静态的节点和属性可以直接绕过Diff逻辑，也大大减少了虚拟Dom的Diff事件
+3. 时间切片也会带来额外的系统复杂性
+
+所以引入时间切片对于Vue3来说投入产出比不太理想，在后来的讨论中，Vue3的时间切片方案就被废弃了
+
 ## 六、Vue的UI框架对比
 移动端：
 - mint-ui
