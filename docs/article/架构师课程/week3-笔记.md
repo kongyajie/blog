@@ -80,7 +80,54 @@
   - 资源体系
   - 远程缓存
 
+## 03-脚手架模块拆分策略和core模块技术方案
 
+### 拆分策略
+
+- **核心模块：core**
+- **命令模块：commands**
+  - 初始化
+  - 发布
+  - 清除缓存
+- **模型模块：models**
+  - Command 命令
+  - Project 项目
+  - Component 组件
+  - Npm 模块
+  - Git 仓库
+- **工具模块：utils**
+  - Git 操作
+  - 云构建
+  - 工具方法
+  - API 请求
+  - Git API
+
+### core模块技术方案
+
+命令执行流程：
+
+- 准备阶段（本周开发）
+- 命令注册（下周开发）
+- 命令执行（下周开发）
+
+![](https://oss-1252175178.cos.ap-shanghai.myqcloud.com/%E6%85%95%E8%AF%BE%E7%BD%91%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AF%BE%E7%A8%8B/%E8%84%9A%E6%89%8B%E6%9E%B6core%E6%A8%A1%E5%9D%97%E6%8A%80%E6%9C%AF%E6%96%B9%E6%A1%88.jpeg)
+
+### 涉及技术点
+
+#### 核心库
+
+- import-local
+- commander
+
+#### 工具库
+
+- npmlog
+- fs-extra
+- semver
+- colors
+- user-home
+- dotenv
+- root-check
 
 ## 06-Node项目如何支持ESModule
 
