@@ -316,8 +316,41 @@ npm包：
 
 ![](https://oss-1252175178.cos.ap-shanghai.myqcloud.com/%E6%85%95%E8%AF%BE%E7%BD%91%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AF%BE%E7%A8%8B/lerna%20%E5%BC%80%E5%8F%91%E8%84%9A%E6%89%8B%E6%9E%B6%E6%B5%81%E7%A8%8B.png)
 
+### Lerna 命令介绍
 
-### 基于 Lerna 创建项目
+参考[官网](https://github.com/lerna/lerna)
+
+- lerna init
+  - 描述：初始化 lerna 项目，添加 `lerna.json` 和 `packages` 目录
+  - 示例：`lerna init`
+- lerna create
+  - 描述：创建packages包
+  - 示例：`lerna create core`
+- lerna add
+  - 描述：对所有packages包，安装依赖，也可单独给某个packages包安装依赖
+  - 示例：`lerna add lodash `  `lerna add lodash packages/core/`
+- lerna link
+  - 描述：自动添加packages包之间的软链（如果有依赖关系的话）
+  - 示例：`lerna link`
+- lerna clean
+  - 描述：对所有packages包，删除其中的 `node_modules`
+  - 示例：`lerna clean`
+- lerna bootstrap
+  - 描述：给所有packages包，安装依赖，等同于cd 到每个包中，执行 `npm i`
+  - 示例：`lerna bootstrap`
+- lerna exec
+  - 描述：对所有packages包，执行shell脚本，也可单独对某个包执行
+  - 示例：
+    - `lerna exec -- rm -rf node_modules`
+    - `lerna exec --scope @jay-cli-dev/core -- rm -rf node_modules`
+- lerna run
+  - 描述：对所有packages包，运行某条命令
+  - 示例：
+    - `lerna run test `
+    - `lerna run --scope @jay-cli-dev/utils test`
+- lerna version
+- lerna diff
+- lerna publish
 
 
 ## 6、Lerna源码分析

@@ -60,7 +60,15 @@
 
 ### 绘制架构设计图
 
+参考：
+
 ![](https://oss-1252175178.cos.ap-shanghai.myqcloud.com/%E6%85%95%E8%AF%BE%E7%BD%91%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AF%BE%E7%A8%8B/%E8%84%9A%E6%89%8B%E6%9E%B6%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%9B%BE.jpeg)
+
+
+
+我的绘制：
+
+![](https://oss-1252175178.cos.ap-shanghai.myqcloud.com/%E6%85%95%E8%AF%BE%E7%BD%91%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AF%BE%E7%A8%8B/%E8%84%9A%E6%89%8B%E6%9E%B6%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%9B%BE-%E8%87%AA%E5%88%B6.jpg)
 
 ### 核心模块
 
@@ -114,12 +122,12 @@
 
 ### 涉及技术点
 
-#### 核心库
+核心库
 
 - import-local
 - commander
 
-#### 工具库
+工具库
 
 - npmlog
 - fs-extra
@@ -128,6 +136,159 @@
 - user-home
 - dotenv
 - root-check
+
+
+
+## 04-脚手架执行准备实现
+
+### 主要内容：
+
+- 拆包
+- 检查版本号
+- 检查node版本
+- 检查root启动
+- 检查用户主目录
+- 检查入参
+- 检查环境变量
+- 检查是否为最新版本（如有，则提示更新）
+
+### 调试技巧
+
+- 如何调试 `jay-cli-dev` ？
+  - 查找 `jay-cli-dev` bin文件地址： `which jay-cli-dev`
+  - 新建 `lanch.json` 文件，并设置其中的 `"program": "/Users/aaron/.nvm/versions/node/v14.15.4/bin/jay-cli-dev"`
+  - 打断点，然后点击运行
+- 如何快速进入第三方依赖包的源码？
+  - 貌似提供了ts文件的包就不能直接进入了
+  - 可以通过 node_modules 直接查看源码
+- 如何快速折叠所有代码？
+  - vscode快捷键 `ctrl+k+0` 折叠所有代码
+  - vscode快捷键 `ctrl+k+j` 展开所有代码
+
+### Command使用
+
+```js
+#!/usr/bin/env node
+
+const commander = require('commander');
+const pkg = require('../package.json');
+
+// 获取commander的单例
+// const { program } = commander.program;
+
+// 手动实例化一个Command实例
+const program = new commander.Command();
+
+program
+  .name(Object.keys(pkg.bin)[0])
+  .usage('<command> [options]')
+  .version(pkg.version)
+  .option('-d, --debug', '是否开启调试模式', false)
+  .option('-e, --env <envName>', '获取环境变量名称');
+
+// command 注册命令
+const clone = program.command('clone <source> [destination]');
+clone
+  .description('clone a repository')
+  .option('-f, --force', '是否强制拷贝')
+  .action((source, destination, comObj) => {
+    console.log('do clone', source, destination, comObj.force);
+  })
+
+// addCommand 注册命令
+const service = new commander.Command('service');
+service
+  .command('start [port]')
+  .description('start service at some port')
+  .action((port) => {
+    console.log('do service start', port);
+  });
+service
+  .command('stop')
+  .description('stop service')
+  .action(() => {
+    console.log('stop service')
+  })
+
+program.addCommand(service);
+
+// jay-test-cli install init -> jay-cli init
+// program
+//   .command('install [name]', 'install package', {
+//     executableFile: 'jay-cli', // 可还用来实现脚手架串联
+//     // isDefault: true // 将此命令作为默认的执行命令
+//     hidden: true // 隐藏command
+//   })
+//   .alias('i');
+
+// program
+//   .arguments('<cmd> [options]') // 类似 Yargs.demandCommand，强制参数必须传递
+//   .description('test command', {
+//     cmd: 'command to run',
+//     options: 'options for command'
+//   })
+//   .action((cmd, options) => {
+//     console.log(cmd, options);
+//   });
+
+// 高级定制1：自定义help信息
+// console.log(program.helpInformation()); // 展示帮助信息
+// program.helpInformation = function() {  // 直接修改帮助信息
+//   return '' 
+// } 
+
+// program.on('--help', () => { // 监听参数
+//   console.log('your help information\n');
+// })
+
+// 高级定制2：实现debug模式
+// program.on('option.debug', () => {
+//   if (program.debug) {
+//     process.env.LOG_LEVEL = 'verbose';
+//   }
+//   console.log(process.env.LOG_LEVEL);
+// })
+
+// 高级定制3：对未知命令监听
+program.on('command:*', (obj) => {
+  console.error('未知的命令：', obj[0]);
+  const availableCommands = program.commands.map(cmd => cmd.name());
+  console.log('可用命令：' + availableCommands.join(','));
+})
+
+program
+  .parse(process.argv);
+
+
+```
+
+
+
+### 源码分析：
+
+#### Require处理文件的方式
+
+> require 支持 .js/.json/.node 三种格式的文件
+
+- 处理 `.js` 时 -> 使用js引擎解析，要求该 `.js` 文件使用 `module.exports/exports` 输出，否则会报错
+- 处理 `.json` 时 -> 使用 JSON.parse 解析，并返回json，如 `const pkg = require('./package.json')`
+- 处理 `.node` (是一个C++ Addon插件)时 -> 使用 process.dlopen 打开
+- 处理其他格式文件时 -> 会当成 `.js` 文件处理，比如 `require('./file.txt')` 或 `require('./readme.md')`
+
+#### npmlog 定制
+
+```js
+const log = require('npmlog');
+
+// 自定义log
+log.addLevel('a', 2000, { fg: 'green' })
+log.addLevel('success', 2500, { fg: 'green', bold: true })
+log.level = 'verbose';
+```
+
+
+
+
 
 ## 06-Node项目如何支持ESModule
 
