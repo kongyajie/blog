@@ -122,11 +122,11 @@ fse.mkdirpSync(cachePath); // 生成缓存目录
 - 第一，进程是一个实体。每一个进程都有它自己的地址空间。
 - 第二，进程是一个“执行中的程序”，存在嵌套关系。
 
-![](https://oss-1252175178.cos.ap-shanghai.myqcloud.com/%E6%85%95%E8%AF%BE%E7%BD%91%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AF%BE%E7%A8%8B/%E8%84%9A%E6%89%8B%E6%9E%B6-%E8%BF%9B%E7%A8%8B.jpeg)
+![](https://oss-1252175178.cos.ap-shanghai.myqcloud.com/%E6%85%95%E8%AF%BE%E7%BD%91%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AF%BE%E7%A8%8B/Node%E5%A4%9A%E8%BF%9B%E7%A8%8B-%E8%BF%9B%E7%A8%8B.jpeg)
 
 我们在 child_process 中创建的进程就是 Node.js 的子进程
 
-![](https://oss-1252175178.cos.ap-shanghai.myqcloud.com/%E6%85%95%E8%AF%BE%E7%BD%91%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AF%BE%E7%A8%8B/%E8%84%9A%E6%89%8B%E6%9E%B6-%E5%AD%90%E8%BF%9B%E7%A8%8B.jpeg)
+![](https://oss-1252175178.cos.ap-shanghai.myqcloud.com/%E6%85%95%E8%AF%BE%E7%BD%91%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AF%BE%E7%A8%8B/Node%E5%A4%9A%E8%BF%9B%E7%A8%8B-%E5%AD%90%E8%BF%9B%E7%A8%8B.jpeg)
 
 ### child_process 用法
 
