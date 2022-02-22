@@ -115,7 +115,7 @@
 
 * 前调研发流程进化的内核：效率、质量、性能
 
-![](https://oss-1252175178.cos.ap-shanghai.myqcloud.com/%E6%85%95%E8%AF%BE%E7%BD%91%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AF%BE%E7%A8%8B/%E5%A4%A7%E5%8E%82%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B%E4%BB%8B%E7%BB%8D.png)
+![](https://oss-1252175178.cos.ap-shanghai.myqcloud.com/%E6%85%95%E8%AF%BE%E7%BD%91%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AF%BE%E7%A8%8B/%E5%A4%A7%E5%8E%82%E7%A0%94%E5%8F%91%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
 
 ### 2、项目创建流程
 
@@ -124,7 +124,7 @@
 - 如何高效沉淀项目中的最佳实践，并能够快速复用？
 - 如何在创建项目后尽可能少改动源码，最快速度投入开发？
 
-![fd4bd400420e4965b22ba5b675e1b2fc.png](evernotecid://1C83579E-CA1F-4ED7-B4C7-12B0EEE72D90/appyinxiangcom/6172631/ENResource/p725)
+![](https://oss-1252175178.cos.ap-shanghai.myqcloud.com/%E6%85%95%E8%AF%BE%E7%BD%91%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AF%BE%E7%A8%8B/%E5%A4%A7%E5%8E%82%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B%E4%BB%8B%E7%BB%8D.png)
 
 ### 3、项目研发模式
 

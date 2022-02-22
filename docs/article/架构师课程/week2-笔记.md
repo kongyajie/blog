@@ -48,7 +48,7 @@ npm i -g @imooc-cli/core
 
 大厂研发架构图：
 
-![f563dc3115fbbbe34ab1451b83307ad3.png](evernotecid://1C83579E-CA1F-4ED7-B4C7-12B0EEE72D90/appyinxiangcom/6172631/ENResource/p728)
+![](https://oss-1252175178.cos.ap-shanghai.myqcloud.com/%E6%85%95%E8%AF%BE%E7%BD%91%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AF%BE%E7%A8%8B/%E5%A4%A7%E5%8E%82%E7%A0%94%E5%8F%91%E6%9E%B6%E6%9E%84%E5%9B%BE.png)
 
 ### 脚手架核心价值
 将研发过程：
