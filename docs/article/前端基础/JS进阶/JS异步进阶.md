@@ -81,7 +81,7 @@ promise 还支持链式调用，可以简化代码
 async 放在函数前，表示返回的是一个包裹了返回值的 promise，同时告诉JS引擎内部可能有异步函数调用
 await 一定要配合 async 才能使用，不然会报错
 
-有了 async/await 组合，我们可以使用同步的写法来处理异步调用了
+**有了 async/await 组合，我们可以使用同步的写法来处理异步调用了**
 
 错误处理可以用 `try{} catch(){}`
 
@@ -108,7 +108,7 @@ try {
 ### 2、async/await 和 Promise 的关系
 - 执行async函数，返回的是一个Promise对象
 - await 相当于 promise 的 then
-- trye...catch可捕获异常，代替了 promise 的 catch
+- try...catch可捕获异常，代替了 promise 的 catch
 
 ### 3、async/await是语法糖，异步的本质还是回调函数
 - async 函数会同步执行
