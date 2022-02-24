@@ -354,19 +354,18 @@ TODO...
 class MyPromise {
   state = 'pending' // 状态 pending fulfilled rejected
   value = undefined // 成功后的值
-  reason = undefined // 失败后的愿意
+  reason = undefined // 失败后的原因
 
   resolveCallbacks = [];
   rejectCallbacks = [];
 
-  constructor(fn) {
+  constructor(fn) { // 传入有异步操作的函数
     const resolveHandler = (value) => {
       if (this.state === 'pending') {
         this.state = 'fulfilled';
         this.value = value;
         this.resolveCallbacks.forEach(fn => fn(value));
       }
-      
     }
 
     const rejectHandler = (reason) => {
@@ -377,11 +376,10 @@ class MyPromise {
       }
     }
     try {
-      fn(resolveHandler, rejectHandler);
+      fn(resolveHandler, rejectHandler); // 跑异步代码
     } catch(err) {
       rejectHandler(err);
     }
-    
   }
 
   then(fn1, fn2) {
@@ -390,7 +388,7 @@ class MyPromise {
     fn2 = typeof fn2 === 'function' ? fn2 : (v) => v;
 
     if (this.state === 'pending') {
-      const p1 = new MyPromise((resolve, reject) => {
+      return new MyPromise((resolve, reject) => {
         this.resolveCallbacks.push(() => {
           try {
             const newValue = fn1(this.value);
@@ -408,9 +406,8 @@ class MyPromise {
           }
         });
       })
-      return p1;
     } else if (this.state === 'fulfilled') {
-      const p1 = new MyPromise((resolve, reject) => {
+      return new MyPromise((resolve, reject) => {
         try {
           const newValue = fn1(this.value);
           resolve(newValue)
@@ -418,7 +415,6 @@ class MyPromise {
           reject(err)
         }
       })
-      return p1;
     } else if (this.state === 'rejected') {
       const p1 = new MyPromise((resolve, reject) => {
         try {
@@ -449,7 +445,7 @@ MyPromise.reject = (reason) => {
 }
 
 MyPromise.all = (promiseList = []) => {
-  const p1 = new MyPromise((resolve, reject) => {
+  return new MyPromise((resolve, reject) => {
     const result = []; // 存储所有的返回结果
     const length = promiseList.length;
     let resolveCount = 0;
@@ -467,12 +463,11 @@ MyPromise.all = (promiseList = []) => {
       })
     })
   })
-  return p1;
 }
 
 MyPromise.race = (promiseList = []) => {
   let resolved = false; // 标记
-  const p1 = new MyPromise((resolve, reject) => {
+  return new MyPromise((resolve, reject) => {
     promiseList.forEach(p => {
       p.then(data => {
         if (!resolved) {
@@ -484,7 +479,6 @@ MyPromise.race = (promiseList = []) => {
       });
     })
   })
-  return p1;
 }
 
 
