@@ -288,12 +288,118 @@ Symbol('foo') === Symbol('foo'); // false
 var obj = {[sym]: 1};
 obj[sym]; // 1
 ```
+
+由来：
+- ES6引入Symbol，是为了解决对象属性名冲突
+
+特性：
+- Symbol函数前不能使用new命令，因为Symbol是一个原始类型的值，不是对象。
+- Symbol函数可以接收一个字符串作为参数，表示对Symbol实例的描述
+- Symbol值不能与其他类型的值进行运算，会报错
+
+用途：
+- 用途1：消除魔法字符串（代码中写死的值）
+- 用途2：可以用来表示一个独一无二的变量防止命名冲突
+- 用途3：利用 symbol 不会被常规的方法（除了 `Object.getOwnPropertySymbols` 外）遍历到，所以可以用来模拟私有变量
+
+```javascript
+// 基本使用
+var sym = Symbol('foo');
+typeof sym; // 'symbol'
+Symbol('foo') === Symbol('foo'); // false
+
+var obj = {[sym]: 1};
+obj[sym]; // 1
+
+// Symbol.for()
+let s1 = Symbol.for('foo');
+let s2 = Symbol.for('foo');
+
+s1 === s2 // true
+
+// Symbol.keyFor()
+let s1 = Symbol.for("foo");
+Symbol.keyFor(s1) // "foo"
+
+let s2 = Symbol("foo");
+Symbol.keyFor(s2) // undefined
+```
+
 参考：[ES6 系列之模拟实现 Symbol 类型](https://github.com/mqyqingfeng/Blog/issues/87)
 
-### 6、为什么给对象添加的方法能用在基本类型上？
+### 6、BigInt有什么用？
+
+- 目的是解决Number无法精确表示非常大的整数
+
+```js
+0n === 0
+// ↪ false
+
+0n == 0
+// ↪ true
+```
+
+[BigInt](https://segmentfault.com/a/1190000019912017?utm_source=tag-newest)
+
+### 7、为什么给对象添加的方法能用在基本类型上？
 > 如 1.toString()
 
 先装箱为 String 内置类型，然后拆箱出 string 字符串
+
+### 8、浮点数精度问题
+
+- 它存在于任何使用浮点数来表示数字的编程语言中，比如java/c中的使用的float和double
+
+- 问题一：0.1+0.2!=0.3
+
+  - 1、当JavaScript执行比较时，实际比较的是比特位；
+  - 2、而JavaScript使用IEEE754浮点数标准表示数字，0.1和0.2因为尾数无限循环而触发3次舍入操作，单独存储0.3这个数字时，仅触发1次舍入，因此会不相等。
+
+- 问题二：9007199254740992 == 9007199254740993 // true
+
+  - 1、`Math.MAX_SAFE_INTEGER`:2^53-1,所有尾数都是1
+  - IEEE754标准下，无法精确表示的非常大的整数将自动四舍五入。确切地说，JS 中的Number类型只能安全地表示-9007199254740991 (-(2^53-1)) 和9007199254740991(2^53-1)之间的整数，任何超出此范围的整数值都可能失去精度。
+  - 3、`MAX_SAFE_INTEGER` 和 `MAX_VALUE` 之间的数字却并不能被正确地表示
+
+- 问题三：指数偏移量为什么是1023（2^11劈一半+同时首位两个数值有特殊用途-2=>(2^11-2)/2）
+  [IEEE 754浮点数标准中64位浮点数为什么指数偏移量是1023？](https://segmentfault.com/q/1010000016401244/a-1020000016446375)
+
+- 问题四：为什么最大安全数是 2^53-1
+  [参考](https://www.zhihu.com/question/29010688)
+
+- 解决方案
+
+  - 1.将数字转成整数
+
+  ```js
+  function add(num1, num2) {
+    const num1Digits = (num1.toString().split('.')[1] || '').length;
+    const num2Digits = (num2.toString().split('.')[1] || '').length;
+    const baseNum = Math.pow(10, Math.max(num1Digits, num2Digits));
+    return (num1 * baseNum + num2 * baseNum) / baseNum;
+    }
+  ```
+
+  - 2.三方库（Math.js、Big.js）
+  - 3.ES6 Number.EPSILON
+
+  ```js
+    Number.EPSILON=(function(){   //解决兼容性问题
+      return Number.EPSILON?Number.EPSILON:Math.pow(2,-52);
+    })();
+    //上面是一个自调用函数，当JS文件刚加载到内存中，就会去判断并返回一个结果，相比if(!Number.EPSILON){
+    //   Number.EPSILON=Math.pow(2,-52);
+    //}这种代码更节约性能，也更美观。
+    function numbersequal(a,b){ 
+      return Math.abs(a-b)<Number.EPSILON;
+    }
+    //接下来再判断   
+    var a=0.1+0.2, b=0.3;
+    console.log(numbersequal(a,b)); //这里就为true了
+  ```
+
+[原码/反码/补码](https://segmentfault.com/a/1190000021511009)
+[原码/反码/补码计算器](http://www.atoolbox.net/Tool.php?Id=952)
 
 ## 总结
 本文重要描述了一下几个部分：
