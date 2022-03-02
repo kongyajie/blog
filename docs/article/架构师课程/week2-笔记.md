@@ -388,29 +388,35 @@ JL中新增：
   - command：命令
   - options：参数（boolean/string/number）
   - 文件顶部增加 `#!/usr/bin/env node`
-- 脚手架初始化流程
+- 脚手架-**初始化**流程
   - 构造函数：Yargs()
   - 常用方法：
-    - Yargs.options
+    - **Yargs.options**
     - Yargs.option
-    - Yargs.group
+    - **Yargs.group**
     - Yargs.demandCommand
     - Yargs.recommendCommands
     - Yargs.strict
-    - Yargs.fail
+    - **Yargs.fail**
     - Yargs.alias
     - Yargs.wrap
     - Yargs.epilogue
-- 脚手架参数解析方法
-  - hideBin(process.argv) / Yargs.argv
-  - Yargs.parse(argv, options)
-- 命令注册方法
-  - Yargs.command(command, describe, builder, handler)
-  - Yargs.command({ command, describe, builder, handler })
+- 脚手架-**参数解析**方法
+  - **hideBin**(process.argv) / Yargs.argv
+  - **Yargs.parse(argv, options)**
+- 脚手架-**命令注册**方法
+  - **Yargs.command(command, describe, builder, handler)**
+  - **Yargs.command({ command, describe, builder, handler })**
 
 ### Lerna
 
-- Lerna 是基于 git+npm 的多package项目管理工具
+- Lerna 是基于 git+npm 的多package项目管理工具，提供了一系列的命令来降低多包项目的管理成本，如：
+  - lerna init 初始化
+  - lerna create 创建包
+  - lerna add 安装依赖
+  - lerna exec 执行脚本
+  - lerna run 执行命令
+
 - 实现原理
   - 通过 import-local 优先调用本地 lerna 命令
   - 通过 Yargs 生成脚手架，先注册全局属性，再注册命令，最后通过 parse 方法解析参数
