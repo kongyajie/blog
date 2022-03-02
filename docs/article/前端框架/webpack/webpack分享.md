@@ -101,9 +101,9 @@
 
 ## 三、Webpack
 
-![](https://oss-1252175178.cos.ap-shanghai.myqcloud.com/webpack%E6%A6%82%E8%A7%88%E5%9B%BE.png)
+![](https://oss-1252175178.cos.ap-shanghai.myqcloud.com/%E6%A1%86%E6%9E%B6/webpack%E6%A6%82%E8%A7%88%E5%9B%BE.png)
 
-### 核心概念
+### 核心概念（重要）
 
 > [webpack](https://webpack.docschina.org/) 中，一切皆模块。
 
@@ -120,9 +120,9 @@
 
 - 见 webpack demo 演示
 
-### 优化
+### 优化（重要）
 
-#### 优化产出代码
+#### 1、优化产出代码
 
 - 使用生产环境（自带：代码压缩、删除Vue/React的warning、Tree-shaking）
 - 小图片 base64编码（减少http请求）
@@ -130,7 +130,7 @@
 - 提取公共代码（拆包 splitchunks）（利用缓存）
 - 懒加载（import (xxx.js) => {}）（利用缓存）
 
-#### 优化构建速度
+#### 2、优化构建速度
 
 - 设置 include/exclude，减少打包范围
 - 优化 babel-loader
@@ -140,7 +140,7 @@
 - ParallelUglifyPlugin
 - DllPlugin
 
-### 原理
+### 原理（重要）
 
 - Webpack 内部原理
   - 核心概念：
@@ -164,7 +164,7 @@
 - SourceMap 实现原理（Chrome开发者工具可设置开启关闭） 
     - [深入浅出之 Source Map](https://juejin.cn/post/7023537118454480904)
 
-### 常见 loader
+### 常见 loader（重要）
 
 - babel-loader（处理js/jsx）
 - less-loader/css-loader/style-loader（处理样式）
@@ -172,7 +172,7 @@
 - vue-loader（处理vue）
 - ts-loader（处理ts）
 
-### 常见 plugin
+### 常见 plugin（重要）
 
 - **HtmlWebpackPlugin** 生成 html 文件
 - **CleanWebpackPlugin** 清理 dist 目录

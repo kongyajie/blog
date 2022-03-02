@@ -455,6 +455,3 @@ console.log('script end');
 // 4.触发eventLoop，执行宏任务
 ```
 
-
-
-### 

@@ -62,8 +62,8 @@ computed: {
 
 ## 二、组件相关
 
-### vue生命周期
-    
+### vue生命周期（重点）
+
 - **beforeCreated** （初始化前）
 - **created**  （vue实例的数据对象data有了）
 - **beforeMounted** （vue实例的data和$el都初始化了，但未渲染）
@@ -81,7 +81,7 @@ computed: {
 
 > 4.**销毁前/后**：在执行destroy方法后，对data的改变不会再触发周期函数，说明此时vue实例已经解除了事件监听以及和dom的绑定，但是dom结构依然存在
 
-### 组件传值
+### 组件间通讯（重点）
 - 父传子：props
 - 子传父：$emit()
 - 组件之间：eventBus事件中心、Vuex
@@ -127,11 +127,11 @@ this.$refs.domName
 
 如果没有彻底解决问题，则在根元素加上`style="display: none;" :style="{display: 'block'}"`
 
-### $nextTick是什么
+### $nextTick是什么（重点）
 > nextTick 是在下次 DOM 更新循环结束之后执行延迟回调，在修改数据之后使用nextTick，则可以在回调中获取更新后的 DOM
 
 [Vue的nextTick具体是微任务还是宏任务?](https://juejin.cn/post/6875492931726376974)
-### v-model的原理&自定义v-model
+### v-model的原理&自定义v-model（重点）
 v-model的原理：
 1. 绑定 `value` 属性
 2. 监听 `input` 事件，触发时，将 `event.target.value` 赋值给 `value`
@@ -145,7 +145,7 @@ v-model的原理：
 
 - [自定义组件的-v-model](https://cn.vuejs.org/v2/guide/components-custom-events.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E7%9A%84-v-model)
 
-### .sync的作用和原理
+### .sync的作用和原理（重点）
 > .sync 用来实现双向数据绑定，但可能会带来维护上的问题，因为子组件可以修改父组件，且在子组件和父组件都没有明显的改动来源。
 
 正常情况下我们组件间通讯通过父组件prop传值和子组件$emit()发送事件来实现：
@@ -175,7 +175,7 @@ mounted () {
 </script>
 ```
 
-### Vue.mixin vs Vue.Extend
+### Vue.mixin vs Vue.Extend（重点）
 
   - mixin用来分发 Vue 组件中的可复用功能，如 `methods` `directives` 等，可以是在组件层级使用，或全局使用，全局使用会影响之后创建的vue实例
   
@@ -253,8 +253,6 @@ Vue Router 是 Vue.js 官方的路由管理器。它和 Vue.js 的核心深度�
 ## 五、原理相关
 
 ### Vue.js内部运行机制
-![68872e7897d83a0fbd26428a70da3da6.png](evernotecid://B63432A3-3625-498B-A5B9-0B4067BB7E62/appyinxiangcom/6172631/ENResource/p546)
-
 ### MVVM
 > `MVVM(Model-View-ViewModel)` 是一种软件架构模式。来自MVC模式，由微软架构师Ken Cooper和Ted Peters开发，通过利用WPF（微软.NET图形系统）和Silverlight（WPF的互联网应用派生品）的特性来简化用户界面的事件驱动程序设计。微软的WPF和Silverlight架构师之一John Gossman于2005年在他的博客上发表了MVVM。
 > `MVVM也被称为model-view-binder`
@@ -277,7 +275,7 @@ Vue Router 是 Vue.js 官方的路由管理器。它和 Vue.js 的核心深度�
 
 - 4、MVVM作为数据绑定的入口，整合Observer、Compile和Watcher三者，通过Observer来监听自己的model数据变化，通过Compile来解析编译模板指令，最终利用Watcher搭起Observer和Compile之间的通信桥梁，达到数据变化 -> 视图更新；视图交互变化(input) -> 数据model变更的双向绑定效果。
 
-### Object.defineProperty vs Proxy
+### Object.defineProperty vs Proxy（重点）
 Object.defineProperty 是 ES5 中一个无法 shim 的特性，这也就是 Vue 不支持 IE8 以及更低版本浏览器的原因。Avalon.js 为了兼容IE6，使用了 VBScript 来实现响应式。
 
 #### 1、Object.defineProperty
@@ -299,7 +297,7 @@ Object.defineProperty 是 ES5 中一个无法 shim 的特性，这也就是 Vue 
   * splice()
   * sort()
   * reverse()
-非变更方法比如 `filter()` `concat()` `slice` 每次都会返回一个新的数组，vue中的vdom会尽量复用，因此也不用担心性能问题
+  非变更方法比如 `filter()` `concat()` `slice` 每次都会返回一个新的数组，vue中的vdom会尽量复用，因此也不用担心性能问题
 
 **缺点3、需深度遍历对象中的对象属性（会有一些性能消耗）**
 - 原因：Object.defineProperty 是对对象属性的监听，因此需要遍历对象的属性，当嵌套较深时，会有一些性能消耗
@@ -309,15 +307,40 @@ Object.defineProperty 是 ES5 中一个无法 shim 的特性，这也就是 Vue 
 - 相当于在对象外层加拦截
 - 缺点：
   -  不兼容IE11，也没有 polyfill
-### v-for key的作用
+### v-for key的作用（重点）
 > 在diff算法中的 updateChildren 时，尽可能的复用key相同的节点，尽量使用移动而不是更新dom的操作
+>
+> 在vdom diff算法中，若 tag 和 key 都相同，则认为是同一节点，因此在v-for中添加key，可复用节点，进而提高性能
 
-### vue.js的template编译过程
+### vue.js的template编译过程（重点）
 > **简而言之，就是先转化成AST树，再得到的render函数返回VNode（Vue的虚拟DOM节点）**，详细步骤如下：
 > 
 > 首先，通过compile编译器把template编译成AST语法树（abstract syntax tree 即 源代码的抽象语法结构的树状表现形式），compile是createCompiler的返回值，createCompiler是用以创建编译器的。另外compile还负责合并option
 >
 > 然后，AST会经过generate（将AST语法树转化成render funtion字符串的过程）得到render函数，render的返回值是VNode，VNode是Vue的虚拟DOM节点，里面有（标签名、子节点、文本等等）
+
+### vue源码整体运行流程/逻辑？（重点，待完善）
+
+- 1、new Vue(options) 
+
+  - options.$el （模板编译 traversal）
+  - options.data（数据绑定：Object.define，Proxy）
+  - options.methods（添加function属性到this）
+- 2、渲染和更新
+
+  - 首次渲染时，会进行依赖收集
+  - 之后数据有变化时，触发Proxy中set的依赖方法
+  - 调用依赖方法后，Dom更新
+- 3、vdom（可通过snabbdom学习vdom机制）
+  - 数据变化后触发更新时，出于性能考虑，vue不是直接更新真正的Dom，而是会通过vdom。
+  - 首先，用js模拟DOM结构
+  - 然后，计算出最小的变更
+  - 最后，更新DOM
+  - 具体来说，就是：
+    - 只进行同级比较，不跨级比较
+    - 优先保留相同节点
+    - 其次移动节点
+    - 最后删除和重建节点
 
 ### React Fiber 能否用于 Vue？
 
@@ -349,62 +372,16 @@ pc端：
 - Vite
 
 
-### 双向绑定
-
-- 1、new Vue(options) 
-
-  - options.$el （模板编译 traversal）
-  - options.data（数据绑定：Object.define，Proxy）
-  - options.methods（添加function属性到this）
-
-- 2、渲染和更新
-
-  - 首次渲染时，会进行依赖收集
-  - 之后数据有变化时，触发Proxy中set的依赖方法
-  - 调用依赖方法后，Dom更新
-
-- 3、vdom（可通过snabbdom学习vdom机制）
-
-  - 数据变化后触发更新时，出于性能考虑，vue不是直接更新真正的Dom，而是会通过vdom。
-  - 首先，用js模拟DOM结构
-  - 然后，计算出最小的变更
-  - 最后，更新DOM
-  - 具体来说，就是：
-    - 只进行同级比较，不跨级比较
-    - 优先保留相同节点
-    - 其次移动节点
-    - 最后删除和重建节点
-
-- 4、v-for的作用
-
-  - 在vdom diff算法中，若 tag 和 key 都相同，则认为是同一节点，因此在v-for中添加key，可复用节点，进而提高性能
-
-- 5、Object.define VS Proxy
-
-  - Object.define（vue2.0采用，IE9+）
-    - 本质上是对对象属性的劫持
-    - 缺点：
-      - 不能检测到对象属性的新增和删除（$set、$delete）
-      - 需深度遍历对象中的对象属性（性能问题）
-      - 数组API方法监听不到（对数组api方法进行重写）
-  - Proxy（vue3.0采用，IE11+）
-    - 相当于在对象外层加拦截
-    - 缺点：
-      -  不兼容IE11，也没有 polyfill
-
-
-
-## 总结
 
 ## 参考
-[vue问答](https://juejin.cn/post/6870374238760894472)
+- [vue问答](https://juejin.cn/post/6870374238760894472)
 
-[ToyVue by Winter](https://www.bilibili.com/s/video/BV1XV411U7NU)
+- [ToyVue by Winter](https://www.bilibili.com/s/video/BV1XV411U7NU)
 
-[史上最强vue总结---面试开发全靠它了](https://juejin.cn/post/6850037277675454478)
+- [史上最强vue总结---面试开发全靠它了](https://juejin.cn/post/6850037277675454478)
 
-[mini-vue](https://www.vuemastery.com/courses/vue3-deep-dive-with-evan-you/)
+- [mini-vue](https://www.vuemastery.com/courses/vue3-deep-dive-with-evan-you/)
 
-[[Vue官方教程笔记]- 尤雨溪手写mini-vue](https://juejin.cn/post/6911897255087702030)
+- [[Vue官方教程笔记]- 尤雨溪手写mini-vue](https://juejin.cn/post/6911897255087702030)
 
-[剖析 Vue.js 内部运行机制](https://juejin.cn/book/6844733705089449991)
+- [剖析 Vue.js 内部运行机制](https://juejin.cn/book/6844733705089449991)

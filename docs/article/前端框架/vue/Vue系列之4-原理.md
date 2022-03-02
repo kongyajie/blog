@@ -61,7 +61,7 @@ MVVM包含3部分：
 - **Model**：是数据和逻辑
 
 ### 2、MVVM在Vue中的体现
- 
+
 ![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a3e0fecfffa34c1f9e8d34572f52e7e2~tplv-k3u1fbpfcp-watermark.image)
 
 示例：
@@ -168,7 +168,7 @@ let reactiveObj = new Proxy(obj, {
 
 ## 三、Vue三要素-渲染：虚拟DOM（Virtual DOM）
 > Vue是数据驱动视图，如何有效控制DOM操作？
-    
+
 - 解决方案：`vdom`
     - JS执行速度快
     - 用JS模拟DOM结构，计算出最小的变更，操作DOM
@@ -210,7 +210,7 @@ let reactiveObj = new Proxy(obj, {
     ]
 }
 ```
-    
+
 - `vdom` 小结：数据驱动视图的模式下，有效控制DOM操作
     - `vnode`：用JS模拟DOM结构
     - `diff算法`：新旧vnode对比，得出最小更新范围，最后更新DOM
@@ -247,7 +247,8 @@ let reactiveObj = new Proxy(obj, {
 - 从根节点开始遍历，判断当前的旧节点和新节点是否同一节点（sel和key相同）
 - 若不是同一节点，则删掉重建；
 - 若是同一节点，则更新当前节点dom，继续处理子元素children
-    
+  
+
 3、**子元素children的对比算法**（尽可能多地复用真实DOM,尽可能少的添加删除真实DOM）
 思路：添加4个指针，分别指向新旧children的开始和结束比较的过程中，循环从两边向中间收拢；
 - 第一步：分别进行开始开始、结束结束、开始结束、结束开始对比，若匹配成功，则指针向中间收拢；
@@ -350,8 +351,8 @@ render: function (createElement) {
 ## 回顾
 - Vue是什么？解决了什么问题？
 - MVVM架构
-- 三要素（响应式、模板编译、vdom/diff算法）
-- 组件渲染/更新过程
+- 三要素：响应式、模板编译、vdom/diff算法（重要）
+- 组件渲染/更新过程（重要）
 - 异步渲染
     - $nextTick
     - 汇总data的修改，一次性更新视图

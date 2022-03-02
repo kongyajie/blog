@@ -258,8 +258,6 @@ Webpack 会将任何一个异步模块与相同的块名称组合到相同的异
 - view，以声明方式将 state 映射到视图；
 - actions，响应在 view 上的用户输入导致的状态变化
 
-![](https://oss-1252175178.cos.ap-shanghai.myqcloud.com/vuex.png)
-
 ### 核心概念
 - **state** 数据源仓库
 - **getters** 可以认为是 store 的计算属性

@@ -7,12 +7,11 @@
 - 原理
 - vite
 
-### Vue3比Vue2有什么优势？
+### Vue3比Vue2有什么优势？（重点）
 - **性能更好**
 - 体积更小
 - **更好的TS支持**
-- **更好的代码组织**
-- **更好的逻辑抽离**
+- **更好的代码组织&逻辑抽离**
 - 更多新功能
 
 ### Vue3和Vue2生命周期有什么区别？
@@ -21,7 +20,7 @@ Options API声明周期
 - beforeDestory => beforeUnmount
 - destoryed => unmounted
 
-### 如何理解Composition API和Options API
+### 如何理解Composition API和Options API（重要）
 CompositionAPI带来了什么
 - 更好的代码组织
 - 更好的逻辑复用
@@ -75,12 +74,14 @@ ref
 - Supense
 - Composition API
 
-#### Composition API 实现逻辑复用
+### Composition API 实现逻辑复用
+
 - 抽离逻辑代码到一个函数
 - 函数命名约定为 useXxxx 格式（React Hooks也是）
 - 在 setup 中引用 useXxxx 函数
 
-#### Vue3如何实现响应式
+### Vue3如何实现响应式
+
 - 回顾vue2.x的Object.defineProperty
 - 学习Proxy语法
 - Vue3如何用Proxy实现响应式
@@ -116,7 +117,7 @@ Vue3用Proxy实现响应式
 - 可通过getCurrentInstance获取当前实例
 - 若使用Options API可正常获取this
 
-### Vue3为什么比Vue2快
+### Vue3为什么比Vue2快（重要）
 - Proxy响应式
 - PatchFlag 静态比较
 - hoistStatic 静态提升
@@ -151,7 +152,3 @@ Vite为什么这么快
 - 前者无需顾虑调用顺序，而后者需要保证hooks的顺序一致
 - 前者reactive和ref比后者useState，要难理解
 
-
-## 总结
-
-## 参考资料

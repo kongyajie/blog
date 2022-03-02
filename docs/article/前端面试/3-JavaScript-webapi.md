@@ -1,4 +1,4 @@
-# JSWebApi
+# JavaScript-webapi
 
 ### 考点总结
 - eventloop
@@ -24,14 +24,14 @@
     - nodeName
     - nodeType
   - 删除子元素
-    -removeChild
+    - removeChild
 - DOM操作性能优化
   - DOM查询做缓存
   - 将频繁操作改为一次性操作 document.createDocumentFragment()
 - HTML 页面的生命周期包含三个重要事件
-  - DOMContentLoaded —— 浏览器已完全加载 HTML，并构建了 DOM 树，但像 `<img>` 和样式表之类的外部资源可能尚未加载完成。
-  - load —— 浏览器不仅加载完成了 HTML，还加载完成了所有外部资源：图片，样式等。
-  - beforeunload/unload —— 当用户正在离开页面时。
+  - **DOMContentLoaded** —— 浏览器已完全加载 HTML，并构建了 DOM 树，但像 `<img>` 和样式表之类的外部资源可能尚未加载完成。
+  - **load** —— 浏览器不仅加载完成了 HTML，还加载完成了所有外部资源：图片，样式等。
+  - **beforeunload**/**unload** —— 当用户正在离开页面时。
 
 ### BOM（Browser Object Model）
 - navigator

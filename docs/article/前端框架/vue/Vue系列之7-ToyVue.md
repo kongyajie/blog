@@ -6,7 +6,7 @@
 - 渲染：Vue如何监听到的数据变化和解析后的HTML进行渲染
 
 #### 2、双向绑定
-- Object.define
+- Object.defineProperty
 - Proxy
 
 #### 3、实现步骤
