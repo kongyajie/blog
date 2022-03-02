@@ -59,6 +59,33 @@
 
 ![原型链](https://img3.mukewang.com/szimg/605754fc0001ec9a19201080.jpg)
 
+原型链示例：
+
+- obj => Object.prototype => null
+- func => Function.prototype => Object.prototype => null
+- arr => Array.prototype => Object.prototype => null
+
+**instanceof**
+
+- **如果A沿着原型链能找到 B.prototype，那么 A instanceof B 为 true**
+
+- func instanceof Function === true
+- func instanceof Object === true
+- 实现：
+
+```js
+function instanceOf(instance, ctor) {
+  let p = instance;
+  while(p) {
+    if (p === ctor.prototype) return true;
+    p = p.__proto__;
+  }
+  return false;
+}
+```
+
+
+
 ### 实现继承
 
 - 练习：ES5/ES6手写Student类
