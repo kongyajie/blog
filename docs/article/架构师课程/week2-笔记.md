@@ -74,7 +74,7 @@ npm i -g @imooc-cli/core
 vue create vue-test-app
 ```
 
-面这条命令由 3 个部分组成：
+上面这条命令由 3 个部分组成：
 
 * 主命令: vue
 * command: create
