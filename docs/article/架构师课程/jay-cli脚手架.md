@@ -29,9 +29,26 @@
 - 1、`core` 脚手架核心模块（**执行准备、命令注册、命令执行**）
 - 2、`init` 项目初始化模块（**npm/git项目模板下载**、*动态渲染*、*项目模板数据管理*）
 
-## 三、实现
+## 三、实现流程
 
-- [x] 实现拆包
+- 实现拆包： 
+
+  - core （cli、exec）
+
+  - commands（init）
+
+  - models（command）
+
+  - utils（log、request）
+
+- 脚手架核心开发
+  - 执行准备（检查Root、检查脚手架版本、提示脚手架新版本更新）
+  - 命令注册（设置帮助提示信息、注册init命令）
+  - 命令执行（生成缓存路径、**node多进程**执行本地代码入口文件）
+- init初始化开发
+  - 准备阶段（获取模板列表、用户选择项目模板）
+  - 模板下载（download-git-repo下载项目模板）
+  - 模板安装（复制文件、安装依赖）
 
 ## 四、难点
 
@@ -47,7 +64,7 @@
 
 - inquiry使用和原理
 - 项目模板初始化
-- **项目模板下载**
+- **项目模板下载**（npm vs git）（**download-git-repo**）
 - 动态渲染 ejs/glob
 
 ## 五、Q&A
@@ -56,7 +73,22 @@
 
 ### Lerna的使用和原理
 
+- 多包框架要解决的问题
 
+### 遇到的问题和收获
+
+- 如何支持 `--debug` 打印信息 ： 命令行 => 环境变量 =>  `npmlog` 设置 level
+
+- 许多有用的小工具库
+  - npmlog
+  - fs-extra
+  - semver
+  - colors
+  - user-home
+  - dotenv
+  - root-check
+
+## 参考
 
 项目地址：https://gitee.com/AaronKong/jay-cli
 
