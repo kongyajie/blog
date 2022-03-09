@@ -130,12 +130,16 @@ fse.mkdirpSync(cachePath); // 生成缓存目录
 
 ### child_process 用法
 
+Node.js基于事件驱动来处理并发，它本身是以单线程模式运行的。Node.js通过[child_process](https://link.zhihu.com/?target=https%3A//iojs.org/api/child_process.html)开启子进程执行指定程序。主要包括4个异步进程函数(spawn,exec,execFile,fork)和3个同步进程函数(spawnSync,execFileSync,execSync)。一般我们比较常用的是spawn和exec这两个方法。
+
+**spawn只能运行指定的程序，参数需要在列表中给出，而exec可以直接运行复杂的命令。其中异步进程函数spawn是最基本的创建子进程的函数，其他三个异步函数都是对spawn不同程度的封装。**
+
 #### 异步
 
 - exec
 - execFile
 - fork
-- spawn
+- spawn `child_process.spawn(command[, args][, options])`
 
 #### 同步
 
