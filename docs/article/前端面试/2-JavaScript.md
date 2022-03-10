@@ -381,7 +381,7 @@ console.log(5)
 
 ```js
 // 第一题
-Promise.resolve().then() => {
+Promise.resolve().then(() => {
   console.log(1)
 }).catch(() => {
   console.log(2)
@@ -415,13 +415,14 @@ Promise.resolve().then(() => {
 ```js
 async function fn() {
   return 100
-}
+};
+
 (async function() {
   const a = fn()
   console.log('a', a);
   const b = await fn()
   console.log('b', b);
-})()
+})();
 
 (async function() {
   console.log('start');
@@ -432,7 +433,7 @@ async function fn() {
   const c = await Promise.reject(300)
   console.log('c', c)
   console.log('end')
-})()
+})();
 ```
 
 - Promise 和 setTimeout顺序
