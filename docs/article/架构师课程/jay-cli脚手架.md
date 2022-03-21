@@ -11,11 +11,11 @@
 - 使用脚手架进行标准的项目初始化
   - **jay init test-project**
 - 需要支持的项目模板：
-  - **C端项目模板：project-template-vue**
+  - ~~**C端项目模板：project-template-vue**~~
   - **中后台管理系统项目模板：project-template-hey-admin**
   - **H5项目模板：project-template-h5**
-  - **小程序项目模板：project-template-miniapp-remax**
-  - Node服务端项目模板：project-template-express / project-template-koa2
+  - ~~**小程序项目模板：project-template-miniapp-remax**~~
+  - ~~Node服务端项目模板：project-template-express / project-template-koa2~~
 
 ## 二、设计
 
@@ -27,7 +27,7 @@
 
 - 多包拆分，使用Lerna进行管理
 - 1、`core` 脚手架核心模块（**执行准备、命令注册、命令执行**）
-- 2、`init` 项目初始化模块（**npm/git项目模板下载**、*动态渲染*、*项目模板数据管理*）
+- 2、`init` 项目初始化模块（**项目模板下载**、*动态渲染*、*项目模板数据管理*）
 
 ## 三、实现流程
 

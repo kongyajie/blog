@@ -310,7 +310,7 @@ npm包：
 
 * babel: [https://github.com/babel/babel](https://github.com/babel/babel)
 * vue-cli: [https://github.com/vuejs/vue-cli](https://github.com/vuejs/vue-cli)
-* create-react-app: [https://github.com/facebook/create-react-app](https://github.com/facebook/create-react-app)
+* ~~create-react-app: [https://github.com/facebook/create-react-app](https://github.com/facebook/create-react-app)~~
 
 **lerna 开发脚手架流程（划重点）**
 

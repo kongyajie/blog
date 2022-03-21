@@ -6,9 +6,6 @@
 
 ## 一、基础使用
 
-### computed和watch的原理
-todo...
-
 ### computed和watch的区别
 - computed 
     - 不支持异步
@@ -19,7 +16,7 @@ todo...
     - 一对多
     - 可设置deep和immediate，以及字符串的形式监听'obj.a'
 
-### v-if和v-show有什么区别
+### v-if 和 v-show有什么区别
 - v-if 不会渲染出元素
 - v-show 会渲染元素，只是将display设为了none
 - visibility:hidden，是隐藏元素，但元素依然占据空间
