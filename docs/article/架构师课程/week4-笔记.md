@@ -138,16 +138,45 @@ spawn适合耗时任务的分布输出，exec则适合输出较少的情况，�
 
 #### 异步
 
-- exec
-- execFile
-- fork
-- spawn `child_process.spawn(command[, args][, options])`
+- exec：执行shell脚本（**一次性输出**）
+- execFile：执行shell文件
+- fork：使用node执行命令（和 require 效果类似，不同点在于 fork 的文件中 pid 是新的 node 进程 id，和主进程 id 互相独立）
+- spawn `child_process.spawn(command[, args][, options])` 流式处理，持续输出，适合执行**耗时任务**，比如 `npm install`
 
 #### 同步
 
 - execSync
 - execFileSync
 - spawnSync
+
+
+
+代码演示
+
+```js
+const cp = require('child_process');
+const path = require('path');
+
+cp.exec('ls -al', function(err, stdout, stderr)) {
+	console.log(err);
+	console.log(stdout);
+	console.log(stderr);
+}
+
+cp.execFile(path.resolve(__dirname, 'test.shell'), ['-al', '-bl'], function(err, stdout, stderr)) {
+  console.log(err);
+	console.log(stdout);
+	console.log(stderr);
+}
+
+let child = cp.spawn(path.resolve(__dirname, 'test.shell'), {
+  
+})
+
+cp.fork(path.resolve(__dirname, 'child.js'));
+```
+
+
 
 
 

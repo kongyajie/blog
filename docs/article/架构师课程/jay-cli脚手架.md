@@ -89,8 +89,8 @@
 
 - jay-cli脚手架属于工程化的一部分，它可以在项目初始化阶段帮助我们快速的复用已有的项目模板。
 
-- 设计之初考虑到未来的可扩展性，参考 vue-cli 对功能模块进行了拆分，并采用了lerna进行管理，主要分为四个部分：
-  - `core`，脚手架核心模块，主要负责脚手架初始化、命令注册、命令执行等
+- 设计之初考虑到未来的可扩展性，参考 vue-cli 对功能模块进行了拆分，并采用了lerna进行管理，主要分为3个部分：
+  - `core`，脚手架核心模块，主要负责脚手架初始化、命令注册、命令执行（ `npminstall` 、`require('@jay-cli/init')` 、child_process.spawn）等
   - `commands`  命令，比如 init
   - `utils` 工具方法，比如 `npmlog` 打印、获取npm包信息等
 - 性能这部分呢也有做一些优化，比如：
@@ -107,16 +107,16 @@
 
 ### 遇到的问题和收获
 
+- 本地调试方法： `npm link` => ` file:../../`
 - 如何支持 `--debug` 打印信息 ： 命令行 => 环境变量 =>  `npmlog` 设置 level
-
 - 许多有用的小工具库
-  - npmlog
+  - **npmlog**
   - fs-extra
-  - semver
+  - **semver**
   - colors
   - user-home
   - dotenv
-  - root-check
+  - **root-check**
 
 ## 参考
 
