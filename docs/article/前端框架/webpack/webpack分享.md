@@ -150,19 +150,42 @@
     - 初始化阶段：启动构建，读取和合并配置参数，加载Plugin，实例化Compiler
     - 编译阶段：从 Entry 出发，针对每个 Module 串行调用对应的 Loader 去翻译文件内容，再找到该 Module 依赖的 Module，递归地进行编译处理
     - 输出阶段：对编译后的 Module 组合成 Chunk ，把 Chunk 转换成文件，输出到文件系统
+
 - loader 实现原理
   - 演示：自定义 loader
+
 - plugin 实现原理
   - 演示：自定义 plugin
+
 - Webpack调试
     - `node --inspect-brk ./node_modules/webpack/bin/webpack.js`
     - 打开 Chrome 浏览器，地址栏里输入 `chrome://inspect/#devices`
+
 - HMR（模块热替换）实现原理
     1. 本地 DevServer启动
     2. 往网页中注入一个代理客户端 `node_modules/webpack-dev-server/client/index.js`，用于连接 DevServer 和 网页，使用Websocket进行通讯
     3. 当监听到文件修改时，发送ws消息给网页代理客户端，触发更新
+
 - SourceMap 实现原理（Chrome开发者工具可设置开启关闭） 
+    - 配置：
+      - eval：JS 在 eval(...) 中，不生成 sourcemap
+      - source-map：生成单独的 map 文件，并在 JS 最后指定
+      - eval-source-map：JS在  eval(...) 中，sourcemap内嵌
+      - inline-source-map：sourcemap 内嵌到 JS 中
+      - cheap-source-map：sourcemap 中只有行信息，没有列信息
+      - eval-cheap-source-map：同上，没有独立的 map 文件
+    - 建议：
+      - 开发环境：eval（速度快）
+      - 生产环境：source-map（开源） / false（非开源）
     - [深入浅出之 Source Map](https://juejin.cn/post/7023537118454480904)
+
+- hash设置
+
+    > 如果使用了hash，并不是每次都会重新生成新的hash，需要看具体使用的哪种hash策略。
+
+    - `hash`是跟整个项目的构建相关，只要项目里有文件更改，整个项目构建的hash值都会更改，并且全部文件都共用相同的hash值。（粒度整个项目）
+    - `chunkhash` 是根据不同的入口进行依赖文件解析，构建对应的chunk（模块），生成对应的hash值。只有被修改的chunk（模块）在重新构建之后才会生成新的hash值，不会影响其他的chunk。（粒度entry的每个入口文件）。
+    - `contenthash`是跟每个生成的文件有关，每个文件都有一个唯一的hash值。当要构建的文件内容发生改变时，就会生成新的hash值，且该文件的改变并不会影响和它同一个模块下的其他文件。（粒度每个文件的内容）。
 
 ### 常见 loader（重要）
 
