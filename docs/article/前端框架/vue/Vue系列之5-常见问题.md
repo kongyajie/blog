@@ -218,9 +218,10 @@ css: {
 - action 提交的是 mutation，而不是直接变更状态。mutation可以直接变更状态
 - action 可以包含任意异步操作。mutation只能是同步操作
 - 提交方式不同
+
 ```js
-action 是用this.store.dispatch('ACTION_NAME',data)来提交。
-mutation是用this.$store.commit('SET_NUMBER',10)来提交
+// action 是用this.store.dispatch('ACTION_NAME',data)来提交。
+// mutation是用this.$store.commit('SET_NUMBER',10)来提交
 ```
 
 - 接收参数不同
@@ -323,12 +324,15 @@ Object.defineProperty 是 ES5 中一个无法 shim 的特性，这也就是 Vue 
   - options.$el （模板编译 traversal）
   - options.data（数据绑定：Object.define，Proxy）
   - options.methods（添加function属性到this）
+
 - 2、渲染和更新
 
   - 首次渲染时，会进行依赖收集
   - 之后数据有变化时，触发Proxy中set的依赖方法
   - 调用依赖方法后，Dom更新
+
 - 3、vdom（可通过snabbdom学习vdom机制）
+
   - 数据变化后触发更新时，出于性能考虑，vue不是直接更新真正的Dom，而是会通过vdom。
   - 首先，用js模拟DOM结构
   - 然后，计算出最小的变更

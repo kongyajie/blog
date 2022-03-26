@@ -96,15 +96,20 @@
 - 使用 SSR
 
 ## React和Vue的区别
-相同点：
-- 都支持组件化
-- 都支持数据驱动视图
-- 都使用vdom操作DOM
 
-不同点：
-- React 使用 JSX 拥抱 JS，Vue 使用模板拥抱 HTML
-- React 是函数式编程，Vue声明式编程
+1. 框架要解决的问题
+- 都是MVVM框架，都支持数据驱动视图
+- 都是为了提升前端页面的开发效率
+
+2. 原理上
+- 都使用vdom操作DOM（vue借鉴了react）
+
+3. 使用上
+- React 使用 JSX 拥抱 JS，Vue 使用模板拥抱 HTML（也支持JSX）；
+- React 是函数式编程，Vue 主要是声明式编程
 - React 更多需要自力更生（如scu），Vue把想要的都给你（computed、watch），提供了众多语法糖，手动挡 vs 自动挡
+- 都支持组件化（react class/函数式+hooks组件，vue单文件组件）
+
 
 ## React的样式文件怎么管理？
 - Vue组件提供了 `.vue单文件组件` 的写法，可以在组件内定义和使用局部样式，那React组件内使用的样式如何组织呢？
