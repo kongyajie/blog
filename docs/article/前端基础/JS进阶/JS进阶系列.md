@@ -1,6 +1,6 @@
 # JS进阶系列
 
-![](https://oss-1252175178.cos.ap-shanghai.myqcloud.com/JS%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%E5%A4%A7%E7%BA%B2.png)
+![](http://assets.processon.com/chart_image/61acbbc15653bb28d8fa7229.png)
 
 ## 前言
 作为前端开发，几乎每天都要和 `JavaScript` 打交道，不管是写页面组件、业务逻辑，还是 `Node.js`，都离不开` JavaScript` 。
