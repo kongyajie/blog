@@ -94,18 +94,12 @@ module.exports = {
             '/article/前端框架/webpack/webpack分享'
           ]
         },
-        {
-          title: '前端面试',
-          children: [
-            '/article/前端面试/总览'
-          ]
-        },
-        {
-          title: '前端拾遗',
-          children: [
-            '/article/碎片知识/前端知识点拾遗'
-          ]
-        },
+        // {
+        //   title: '前端拾遗',
+        //   children: [
+        //     '/article/碎片知识/前端知识点拾遗'
+        //   ]
+        // },
         {
           title: '数据结构与算法',
           children: [
@@ -116,6 +110,12 @@ module.exports = {
           title: '设计模式',
           children: [
             '/article/设计模式/总览'
+          ]
+        },
+        {
+          title: '前端自检',
+          children: [
+            '/article/前端自检/总览'
           ]
         },
         // {
