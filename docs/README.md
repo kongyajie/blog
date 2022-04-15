@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: ./logo.png
+heroImage: ./hero.png
 actionText: 开始阅读 →
 actionLink: /article/
 features:

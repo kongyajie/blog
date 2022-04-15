@@ -10,6 +10,7 @@ module.exports = {
   description: '系统性学习，打造完善的知识体系', // meta 中的描述文字，意义不大，SEO用
   base: '/',
   head: [
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['script', {}, `
       var _hmt = _hmt || [];
       (function() {
@@ -31,6 +32,7 @@ module.exports = {
     `]
   ],
   themeConfig: {
+    logo: '/logo.png',
     sidebarDepth: 2, // 将同时提取markdown中h2 和 h3 标题，显示在侧边栏上
     lastUpdated: '上次更新',// 文档更新时间：每个文件git最后提交的时间
     // 顶部导航栏
