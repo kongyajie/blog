@@ -38,7 +38,7 @@ ref
 - 通过.value修改值
 
 最佳使用方式
-- 用reactive做对象的响应式，用ref做值类型的响应式
+- **用reactive做对象的响应式，用ref做值类型的响应式**
 - setup中返回toRefs(state)，或者toRef(state,'xxx')
 - ref的变量命名都用xxxRef
 - 合成函数返回响应式对象时，使用toRefs

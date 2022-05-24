@@ -310,11 +310,11 @@ xhr.status
 - Access-Control-Allow-Methods: GET, POST, PUT
 - Access-Control-Allow-Headers: X-Custom-Header
 
-**实际项目中ajax的常用插件**
+**几个名词的对比**
 
-- jQuery 
-- fetch
-- axios
+- 技术名词：ajax（asyn json and xml）
+- 浏览器 API： XMLHttpRequest、Fetch（xhr的升级版，使用更简洁，支持promise）
+- 插件/库：jquery、axios
 
 #### 3）浏览器存储
 
