@@ -10,5 +10,7 @@ features:
   details: 掌握前端流行框架/工具，如Vue、React、Webpack等，提升开发效率，夯实技术竞争力。
 - title: 源码解析
   details: 了解源码的实现，通过对Lodash、jQuery、Vue等库/框架源码进行分析，了解内部运行机制，构建核心竞争力。
-footer: MIT Licensed | Copyright © 2019-present AaronKong
+footer: "MIT Licensed | 沪ICP备20013265号-1 | Copyright © 2019-present AaronKong"
 ---
+
+
